@@ -3,7 +3,7 @@
 
 Version 0.1
 
-Prepared by <Sosa Juan, Imenzon Carlos, Fernandez Federico>
+Prepared by <author Sosa Juan, Imenzon Carlos, Fernandez Federico>
 
 <organization>  
 	
