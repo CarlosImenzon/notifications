@@ -45,6 +45,13 @@ Los TAGGED solo podran acceder a los documentos en los cuales son referenciado y
 
 ### 2.1 Product Perspective
 
+
+### 2.2 Product Functions
+NOTIFICATIONS tendra dos tipos de usuarios, administrador el cual se encargara de subir o crear el documento para el usuario estandar.
+El usuario estandar sera el que usara la aplicacion y podra ver el documento enviado por el administrador. Para que el usuario pueda 
+ver las notificaciones es necesario que tenga la aplicacion instalada en el celular y tener datos o estar conectado a una red Wi-Fi.
+
+
 ## Revision History
 | Name | Date    | Reason For Changes  | Version   |
 | ---- | ------- | ------------------- | --------- |
