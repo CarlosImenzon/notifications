@@ -15,19 +15,22 @@ Table of Contents
 * 1 [Introduction](#1-introduction)
   * 1.1 [Document Purpose](#11-document-purpose)
   * 1.2 [Product Scope](#12-product-scope)
-
+  * 1.3 [Definitions, Acronyms and Abbreviations](#13-definitions-acronyms-and-abbreviations)
 
 
 
 
 
 ## 1. Introduction
->Este proyecto se realiza con la finalidad de notificar a un usuario que tiene un documento donde se le nombra y
+Este proyecto se realiza con la finalidad de notificar a un usuario que tiene un documento donde se lo nombra y
 ademas facilitarle la tarea al/los administrador/es de enviar el documento.
 
 ### 1.1 Document Purpose
 Facilitar el acceso a un documento de manera instantanea y simple.
 
+### 1.1 Definitions, Acronyms and Abbreviations
+La forma de interactuar en el sistema sera de la siguiente manera:
+Los TAGGED solo podran acceder a los documentos en los cuales son referenciado y no podran crear otros usuario, en cambio, los ADMIN podran cargar documentos y crear nuevos usuarios
 
 
 ## Revision History
