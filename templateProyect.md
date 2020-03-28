@@ -18,7 +18,8 @@ Table of Contents
   * 1.3 [Definitions, Acronyms and Abbreviations](#13-definitions-acronyms-and-abbreviations)
   * 1.4 [References](#14-references) 
   * 1.5 [Document Overview](#15-document-overview)
-  * 2 [Product Overview](#2-product-overview)
+* 2 [Product Overview](#2-product-overview)
+  * 2.1 [Product Perspective](#21-product-perspective)
 
 
 
@@ -42,8 +43,9 @@ Los TAGGED solo podran acceder a los documentos en los cuales son referenciado y
 
 ## 2. Product Overview
 
-
 ### 2.1 Product Perspective
+La aplicación NOTIFACIÓN sera un producto diseñado para la UNRC, en el cual, se utilizara para comunicarle a sus usarios que un documento se encuentra disponible. 
+
 
 ## Revision History
 | Name | Date    | Reason For Changes  | Version   |
