@@ -18,19 +18,20 @@ Table of Contents
   * 1.3 [Definitions, Acronyms and Abbreviations](#13-definitions-acronyms-and-abbreviations)
   * 1.4 [References](#14-references) 
   * 1.5 [Document Overview](#15-document-overview)
-  * 2 [Product Overview](#2-product-overview)
+* 2 [Product Overview](#2-product-overview)
+  * 2.1 [Product Perspective](#21-product-perspective)
 
 
 
 ## 1. Introduction
-Este proyecto se realiza con la finalidad de notificar a un usuario que tiene un documento donde se lo nombra y
-ademas facilitarle la tarea al/los administrador/es de enviar el documento.
+EEEEEste documento es una especificacion de requerimientos de sofware para el sistema de notificaciones . En este documento se definirá el alcance del sistema y una descripcion especifica de los requerimientos.
 
 ### 1.1 Document Purpose
-Facilitar el acceso a un documento de manera instantanea y simple.
+Facilitar el acceso a los usuarios a un documento de manera instantanea y simple.
 
 ### 1.2 Product Scope
-La aplicacion estará disponible para S.O.Android y para versiones superiores a .
+El presente documento describe detalladamente la arquitectura y los requerimientos del sistema, el proposito del proyecto es la creacion de una aplicacion con la finalidad de notificar a un usuario que tiene un documento que lo referencia y
+ademas facilitarle la tarea al/los administrador/es de enviar el documento.
 
 ### 1.3 Definitions, Acronyms and Abbreviations
 La forma de interactuar en el sistema sera de la siguiente manera:
@@ -42,8 +43,9 @@ Los TAGGED solo podran acceder a los documentos en los cuales son referenciado y
 
 ## 2. Product Overview
 
-
 ### 2.1 Product Perspective
+La aplicación NOTIFACIÓN sera un producto diseñado para la UNRC, en el cual, se utilizara para comunicarle a sus usarios que un documento se encuentra disponible. 
+
 
 
 ### 2.2 Product Functions
