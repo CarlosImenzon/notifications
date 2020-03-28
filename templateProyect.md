@@ -23,14 +23,14 @@ Table of Contents
 
 
 ## 1. Introduction
-Este proyecto se realiza con la finalidad de notificar a un usuario que tiene un documento donde se lo nombra y
-ademas facilitarle la tarea al/los administrador/es de enviar el documento.
+Este documento es una especificacion de requerimientos de sofware para el sistema de notificaciones . En este documento se definirá el alcance del sistema y una descripcion especifica de los requerimientos.
 
 ### 1.1 Document Purpose
-Facilitar el acceso a un documento de manera instantanea y simple.
+Facilitar el acceso a los usuarios a un documento de manera instantanea y simple.
 
 ### 1.2 Product Scope
-La aplicacion estará disponible para S.O.Android y para versiones superiores a .
+El presente documento describe detalladamente la arquitectura y los requerimientos del sistema, el proposito del proyecto es la creacion de una aplicacion con la finalidad de notificar a un usuario que tiene un documento que lo referencia y
+ademas facilitarle la tarea al/los administrador/es de enviar el documento.
 
 ### 1.3 Definitions, Acronyms and Abbreviations
 La forma de interactuar en el sistema sera de la siguiente manera:
