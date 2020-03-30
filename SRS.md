@@ -48,8 +48,6 @@ Los TAGGED solo podran acceder a los documentos en los cuales son referenciado y
 ### 2.1 Perspectiva del documento
 La aplicación NOTIFACIÓN sera un producto diseñado para la UNRC, en el cual, se utilizara para comunicarle a sus usarios que un documento se encuentra disponible. 
 
-
-
 ### 2.2 Funcionalidad del producto
 NOTIFICATIONS tendra dos tipos de usuarios, administrador el cual se encargara de subir o crear el documento para el usuario estandar.
 El usuario estandar sera el que usara la aplicacion y podra ver el documento enviado por el administrador. Para que el usuario pueda 
@@ -57,10 +55,10 @@ ver las notificaciones es necesario que tenga la aplicacion instalada en el celu
 
 
 ### 2.3 Restricciones Generales
-*Debe utilizar conexión a internet.
-*Debe poseer un mail.
-*El sistema se diseñara según el modelo cliente/servidor 
-*Lenguajes y tecnologías en uso: RUBY, JAVASCRIPT, SQL, HTML.
+* Debe utilizar conexión a internet.
+* Debe poseer un mail.
+* El sistema se diseñara según el modelo cliente/servidor.
+* Lenguajes y tecnologías en uso: RUBY, JAVASCRIPT, SQL, HTML.
 
 
 ## Revision del historial
