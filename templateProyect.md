@@ -24,7 +24,7 @@ Table of Contents
 
 
 ## 1. Introduction
-EEEEEste documento es una especificacion de requerimientos de sofware para el sistema de notificaciones . En este documento se definirá el alcance del sistema y una descripcion especifica de los requerimientos.
+Este documento es una especificacion de requerimientos de sofware para el sistema de notificaciones . En este documento se definirá el alcance del sistema y una descripcion especifica de los requerimientos.
 
 ### 1.1 Document Purpose
 Facilitar el acceso a los usuarios a un documento de manera instantanea y simple.
