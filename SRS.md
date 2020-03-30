@@ -24,13 +24,8 @@ Table of Contents
 
 
 
-<<<<<<< HEAD
 ## 1. Introduction
 Este documento es una especificacion de requerimientos de sofware para el sistema de notificaciones . En este documento se definirá el alcance del sistema y una descripcion especifica de los requerimientos.
-=======
-## 1. Introduccion
-EEEEEste documento es una especificacion de requerimientos de sofware para el sistema de notificaciones . En este documento se definirá el alcance del sistema y una descripcion especifica de los requerimientos.
->>>>>>> 9996f19e0dbbc9aef3fea2c4107402a7e54a589f
 
 ### 1.1 Proposito del documento
 Facilitar el acceso a los usuarios a un documento de manera instantanea y simple.
@@ -47,11 +42,6 @@ Los TAGGED solo podran acceder a los documentos en los cuales son referenciado y
 
 ### 1.5 Vision global
 
-<<<<<<< HEAD
-
-## 2. Product Overview
-=======
->>>>>>> 9996f19e0dbbc9aef3fea2c4107402a7e54a589f
 
 ## 2. Descripcion global
 
