@@ -9,7 +9,7 @@ Prepared by <author Sosa Juan, Imenzon Carlos, Fernandez Federico>
 	
 <date created> 
 
-Table of Contents
+Tabla de contenidos
 =================
 * [Revision del historial](#revision-del-historial)
 * 1 [Introduccion](#1-introduccion)
@@ -20,7 +20,7 @@ Table of Contents
   * 1.5 [Vision global](#15-vision-global)
 * 2 [Descripcion global](#2-descripcion-global)
   * 2.1 [Perspectiva del documento](#21-perspectiva-del-producto)
-  * 2.3 Restricciones Generales
+  * 2.3 [Restricciones Generales] (#23-restricciones-generales)
 
 
 
@@ -61,7 +61,6 @@ ver las notificaciones es necesario que tenga la aplicacion instalada en el celu
 *Debe poseer un mail.
 *El sistema se diseñara según el modelo cliente/servidor 
 *Lenguajes y tecnologías en uso: RUBY, JAVASCRIPT, SQL, HTML.
-
 
 
 ## Revision del historial
