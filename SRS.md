@@ -20,7 +20,7 @@ Tabla de contenidos
   * 1.5 [Vision global](#15-vision-global)
 * 2 [Descripcion global](#2-descripcion-global)
   * 2.1 [Perspectiva del documento](#21-perspectiva-del-producto)
-  * 2.3 [Restricciones Generales] (#23-restricciones-generales)
+  * 2.3 [Restricciones Generales](#23-restricciones-generales)
 
 
 
