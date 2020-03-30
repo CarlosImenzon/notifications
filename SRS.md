@@ -20,7 +20,8 @@ Tabla de contenidos
   * 1.5 [Vision global](#15-vision-global)
 * 2 [Descripcion global](#2-descripcion-global)
   * 2.1 [Perspectiva del documento](#21-perspectiva-del-producto)
-  * 2.3 [Restricciones Generales] (#23-restricciones-generales)
+  * 2.3 [Restricciones Generales](#23-restricciones-generales)
+  * 2.4 [Suposiciones y dependencias](#24-suposiciones-y-dependencias)
 
 
 
@@ -53,12 +54,13 @@ NOTIFICATIONS tendra dos tipos de usuarios, administrador el cual se encargara d
 El usuario estandar sera el que usara la aplicacion y podra ver el documento enviado por el administrador. Para que el usuario pueda 
 ver las notificaciones es necesario que tenga la aplicacion instalada en el celular y tener datos o estar conectado a una red Wi-Fi.
 
-
 ### 2.3 Restricciones Generales
 * Debe utilizar conexión a internet.
 * Debe poseer un mail.
 * El sistema se diseñara según el modelo cliente/servidor.
 * Lenguajes y tecnologías en uso: RUBY, JAVASCRIPT, SQL, HTML.
+
+### 2.4 Suposiciones y dependencias
 
 
 ## Revision del historial
