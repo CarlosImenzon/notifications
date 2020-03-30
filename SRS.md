@@ -51,7 +51,7 @@ El objetivo de este proyecto es facilitar la comunicacion entre la UNRC y todas 
 ## 2. Descripcion global
 
 ### 2.1 Perspectiva del documento
-La aplicación NOTIFACIÓNS sera un producto diseñado para la Universidad Nacional de Rio Cuarto, en el cual, se utilizara para comunicarle a sus usarios que un documento se encuentra disponible. 
+La aplicación NOTIFICATIÓNS sera un producto diseñado para la Universidad Nacional de Rio Cuarto, en el cual, se utilizara para comunicarle a sus usarios que un documento se encuentra disponible. 
 
 ### 2.2 Funcionalidad del producto
 NOTIFICATIONS tendra dos tipos de usuarios, administrador el cual se encargara de subir o crear el documento para el usuario estandar.
@@ -73,6 +73,7 @@ ver las notificaciones es necesario que tenga la aplicacion instalada en el celu
 Esta sección especifica los requisitos del producto de software. 
 
 ### 3.1 Requerimientos de interfaz externa
+
 
 
 
