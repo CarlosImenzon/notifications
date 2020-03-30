@@ -43,7 +43,7 @@ Los TAGGED solo podran acceder a los documentos en los cuales son referenciado y
 ### 1.4 Referencias
 
 ### 1.5 Vision global
-
+El objetivo de este proyecto es facilitar la comunicacion entre la UNRC y todas las personas que usen el sistema SIAL, a traves de la aplicacion "notifications". La aplicacion va a enviar una notificacion al usuario de que lo han nombrado en un documento, ya sea porque el haya solicitado el documento o simplemente se le haya nombrado para comunicarle algo.
 
 ## 2. Descripcion global
 
