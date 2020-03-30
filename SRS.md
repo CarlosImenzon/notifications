@@ -64,6 +64,7 @@ ver las notificaciones es necesario que tenga la aplicacion instalada en el celu
 ### 2.4 Suposiciones y dependencias
 
 
+
 ## Revision del historial
 | Nombre | Fecha   | Razon del cambio    | Version   |
 | -------| ------- | ------------------- | --------- |
