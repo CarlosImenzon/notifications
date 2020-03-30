@@ -21,10 +21,8 @@ Tabla de contenidos
 * 2 [Descripcion global](#2-descripcion-global)
   * 2.1 [Perspectiva del documento](#21-perspectiva-del-producto)
   * 2.3 [Restricciones Generales](#23-restricciones-generales)
-<<<<<<< HEAD
   * 2.4 [Suposiciones y dependencias](#24-suposiciones-y-dependencias)
-=======
->>>>>>> 72cfb5903cd288e19cf9d87b29e3abe2f6f273c1
+
 
 
 
