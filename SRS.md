@@ -20,6 +20,7 @@ Table of Contents
   * 1.5 [Vision global](#15-vision-global)
 * 2 [Descripcion global](#2-descripcion-global)
   * 2.1 [Perspectiva del documento](#21-perspectiva-del-producto)
+  * 2.3 Restricciones Generales
 
 
 
@@ -63,6 +64,14 @@ La aplicación NOTIFACIÓN sera un producto diseñado para la UNRC, en el cual, 
 NOTIFICATIONS tendra dos tipos de usuarios, administrador el cual se encargara de subir o crear el documento para el usuario estandar.
 El usuario estandar sera el que usara la aplicacion y podra ver el documento enviado por el administrador. Para que el usuario pueda 
 ver las notificaciones es necesario que tenga la aplicacion instalada en el celular y tener datos o estar conectado a una red Wi-Fi.
+
+
+### 2.3 Restricciones Generales
+*Debe utilizar conexión a internet.
+*Debe poseer un mail.
+*El sistema se diseñara según el modelo cliente/servidor 
+*Lenguajes y tecnologías en uso: RUBY, JAVASCRIPT, SQL, HTML.
+
 
 
 ## Revision del historial
