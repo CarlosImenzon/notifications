@@ -24,6 +24,7 @@ Tabla de contenidos
   * 2.4 [Suposiciones y dependencias](#24-suposiciones-y-dependencias)
 * 3 [Requerimientos Especificos](#3-requerimientos-especificos) 
   * 3.1 [Requerimientos de interfaz externa](#31-requerimientos-de-interfaz-externa)
+  * 3.2 [Requerimientos Funcionales](#32-requerimientos-Funcionales)
 
 
 
@@ -70,9 +71,18 @@ ver las notificaciones es necesario que tenga la aplicacion instalada en el celu
 * Base de datos de la UNRC.
 
 ## 3 Requerimientos Especificos
-Esta sección especifica los requisitos del producto de software. 
 
 ### 3.1 Requerimientos de interfaz externa
+En esta sección especificaremos aquellos requisitos que intervienen en el proceso de desarrollo del software como por ejemplo que interfaz le gustaría al usuario
+
+### 3.2 Requerimientos Funcionales
+* Registrarse: El usuario deberá proporcionar un nombre, una contraseña, un mail y deberá
+proporcionar acceso a los datos personales del SIAL.
+* Inicio de sesión: Un usuario registrado deberá ser capaz de ingresar a la aplicación.
+* Recuperar contraseña: El usuario registrado deberá ser capaz de recuperar la contraseña
+utilizando el correo registrado.
+* Descargar Documentos: El usuario debera ser capaz de descargar documentos.
+
 
 
 
