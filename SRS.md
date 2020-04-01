@@ -25,6 +25,7 @@ Tabla de contenidos
 * 3 [Requerimientos Especificos](#3-requerimientos-especificos) 
   * 3.1 [Requerimientos de interfaz externa](#31-requerimientos-de-interfaz-externa)
   * 3.2 [Requerimientos Funcionales](#32-requerimientos-Funcionales)
+  * 3.2 ![Diagrama](/home/juanse/Imágenes/DD.png)
 
 
 
