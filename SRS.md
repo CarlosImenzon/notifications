@@ -45,6 +45,7 @@ La forma de interactuar en el sistema sera de la siguiente manera:
 Los TAGGED solo podran acceder a los documentos en los cuales son referenciado y no podran crear otros usuario, en cambio, los ADMIN podran cargar documentos y crear nuevos usuarios.
 
 ### 1.4 Referencias
+* SRS: https://github.com/jam01/SRS-Template
 
 ### 1.5 Vision global
 El objetivo de este proyecto es facilitar la comunicacion entre la UNRC y todas las personas que usen el sistema SIAL, a traves de la aplicacion NOTIFICATIONS. La aplicacion va a enviar una notificacion al usuario de que lo han nombrado en un documento, ya sea porque el haya solicitado el documento o simplemente se le haya nombrado para comunicarle algo.
