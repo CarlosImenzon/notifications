@@ -25,7 +25,7 @@ Tabla de contenidos
 * 3 [Requerimientos Especificos](#3-requerimientos-especificos) 
   * 3.1 [Requerimientos de interfaz externa](#31-requerimientos-de-interfaz-externa)
   * 3.2 [Requerimientos Funcionales](#32-requerimientos-Funcionales)
-  * 3.3 ![Diagrama](/home/juanse/Imágenes/DD.png)
+  * 3.3 [Diagrama](/home/juanse/Imágenes/DD.png)
 
 
 
@@ -88,7 +88,7 @@ utilizando el correo registrado.
  
  
 ### 3.3 Diagrama
-[Diagrama](/home/juanse/Imágenes/DD.png)
+![Diagrama](/home/juanse/Imágenes/DD.png)
 
 
 
