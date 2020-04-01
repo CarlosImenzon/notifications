@@ -88,7 +88,7 @@ utilizando el correo registrado.
  
  
 ### 3.3 Diagrama
-![Diagrama](/home/juanse/Imágenes/DD.png)
+[Diagrama](/home/juanse/Imágenes/DD.png)
 
 
 
