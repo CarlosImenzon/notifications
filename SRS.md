@@ -81,6 +81,7 @@ proporcionar acceso a los datos personales del SIAL.
 * Inicio de sesión: Un usuario registrado deberá ser capaz de ingresar a la aplicación.
 * Recuperar contraseña: El usuario registrado deberá ser capaz de recuperar la contraseña
 utilizando el correo registrado.
+* Estado del documento: El ususario debera poder verificar el estado del documento solicitado.
 * Descargar Documentos: El usuario debera ser capaz de descargar documentos.
 
 
