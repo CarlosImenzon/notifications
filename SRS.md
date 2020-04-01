@@ -25,7 +25,7 @@ Tabla de contenidos
 * 3 [Requerimientos Especificos](#3-requerimientos-especificos) 
   * 3.1 [Requerimientos de interfaz externa](#31-requerimientos-de-interfaz-externa)
   * 3.2 [Requerimientos Funcionales](#32-requerimientos-Funcionales)
-  * 3.3 ![Diagrama](class-diagram.jpeg)
+  
 
 
 
@@ -86,9 +86,7 @@ utilizando el correo registrado.
 * Estado del documento: El ususario debera poder verificar el estado del documento solicitado.
 * Descargar Documentos: El usuario debera ser capaz de descargar documentos.
  
- 
-### 3.3 Diagrama
-[Diagrama]
+![Diagrama](class-diagram.jpeg)
 
 
 
