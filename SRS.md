@@ -89,6 +89,7 @@ utilizando el correo registrado.
 * Estado del Documento: El ususario debera poder verificar el estado del documento solicitado.
 * Descargar Documentos: El usuario debera ser capaz de descargar documentos.
 * Subir Documento: El usuario administrador debe poder realizar la carga de un documento.
+* Visualizacion del Documento: El usuario debera poder visualizar los documentos propios y publicos. 
 
 ### 3.3 Requerimientos de Desempeño
 
