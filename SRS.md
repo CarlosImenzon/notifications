@@ -88,7 +88,7 @@ En esta sección especificaremos aquellos requisitos que intervienen en el proce
 * Subir Documento: El usuario administrador debe poder realizar la carga de un documento.
 * Visualizacion del Documento: El usuario debera poder visualizar los documentos propios y publicos. 
 
-  ![Diagrama](Diagrama-de-clase.jpeg)
+  ![Diagrama](Diagrama.jpeg)
 
 
 ### 3.3 Requerimientos de Desempeño
