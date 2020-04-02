@@ -29,6 +29,12 @@ Tabla de contenidos
   * 3.4 [Restricciones de diseño](#34-restricciones-de-diseño)
   * 3.5 [Atributos](#35-atributos)
 
+## Revision del historial
+| Nombre | Fecha   | Razon del cambio    | Version   |
+| -------| ------- | ------------------- | --------- |
+|        |         |                     |           |
+|        |         |                     |           |
+|        |         |                     |           |
 
 ## 1. Introduccion
 Este documento es una especificacion de requerimientos de sofware para el sistema de notificaciones . En este documento se definirá el alcance del sistema y una descripcion especifica de los requerimientos.
@@ -99,11 +105,3 @@ En esta sección especificaremos aquellos requisitos que intervienen en el proce
 
 
 
-
-
-## Revision del historial
-| Nombre | Fecha   | Razon del cambio    | Version   |
-| -------| ------- | ------------------- | --------- |
-|        |         |                     |           |
-|        |         |                     |           |
-|        |         |                     |           |
