@@ -25,10 +25,12 @@ Tabla de contenidos
 * 3 [Requerimientos Especificos](#3-requerimientos-especificos) 
   * 3.1 [Requerimientos de interfaz externa](#31-requerimientos-de-interfaz-externa)
   * 3.2 [Requerimientos Funcionales](#32-requerimientos-Funcionales)
-  
-
-
-
+  * 3.3 [Requerimientos de Desempeño](
+  #33-requerimientos-de-Desempeño)
+  * 3.4 [Restricciones de diseño](
+  #34-restricciones-de-diseño)
+  * 3.5 [Atributos](
+  #35-atributos)
 
 
 ## 1. Introduccion
@@ -87,6 +89,12 @@ utilizando el correo registrado.
 * Estado del Documento: El ususario debera poder verificar el estado del documento solicitado.
 * Descargar Documentos: El usuario debera ser capaz de descargar documentos.
 * Subir Documento: El usuario administrador debe poder realizar la carga de un documento.
+
+### 3.3 Requerimientos de Desempeño
+
+### 3.4 Restricciones de Diseño
+
+### 3.5 Atributos
 
 ![Diagrama](class-diagram.jpeg)
 
