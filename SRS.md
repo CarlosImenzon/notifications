@@ -25,12 +25,9 @@ Tabla de contenidos
 * 3 [Requerimientos Especificos](#3-requerimientos-especificos) 
   * 3.1 [Requerimientos de interfaz externa](#31-requerimientos-de-interfaz-externa)
   * 3.2 [Requerimientos Funcionales](#32-requerimientos-Funcionales)
-  * 3.3 [Requerimientos de Desempeño](
-  #33-requerimientos-de-Desempeño)
-  * 3.4 [Restricciones de diseño](
-  #34-restricciones-de-diseño)
-  * 3.5 [Atributos](
-  #35-atributos)
+  * 3.3 [Requerimientos de Desempeño]( #33-requerimientos-de-Desempeño)
+  * 3.4 [Restricciones de diseño](#34-restricciones-de-diseño)
+  * 3.5 [Atributos](#35-atributos)
 
 
 ## 1. Introduccion
@@ -81,23 +78,24 @@ En esta sección especificaremos aquellos requisitos que intervienen en el proce
 
 ### 3.2 Requerimientos Funcionales
 * Registrarse: El usuario deberá proporcionar un nombre, una contraseña, un mail y deberá
-proporcionar acceso a los datos personales del SIAL.
+  proporcionar acceso a los datos personales del SIAL.
 * Inicio de Sesión: Un usuario registrado deberá ser capaz de ingresar a la aplicación.
 * Cerrar Sesion: El usuario debe poder cerrar seccion de la aplicacion. 
 * Recuperar Contraseña: El usuario registrado deberá ser capaz de recuperar la contraseña
-utilizando el correo registrado.
+  utilizando el correo registrado.
 * Estado del Documento: El ususario debera poder verificar el estado del documento solicitado.
 * Descargar Documentos: El usuario debera ser capaz de descargar documentos.
 * Subir Documento: El usuario administrador debe poder realizar la carga de un documento.
 * Visualizacion del Documento: El usuario debera poder visualizar los documentos propios y publicos. 
+
+![Diagrama](Diagrama-de-clase.jpeg)
+
 
 ### 3.3 Requerimientos de Desempeño
 
 ### 3.4 Restricciones de Diseño
 
 ### 3.5 Atributos
-
-![Diagrama](class-diagram.jpeg)
 
 
 
