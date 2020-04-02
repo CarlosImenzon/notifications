@@ -10,7 +10,7 @@ Prepared by <author Sosa Juan, Imenzon Carlos, Fernandez Federico>
 <date created> 
 
 Tabla de contenidos
-=================
+
 * [Revision del historial](#revision-del-historial)
 * 1 [Introduccion](#1-introduccion)
   * 1.1 [Proposito del documento](#11-Proposito-del-documento)
@@ -80,12 +80,14 @@ En esta sección especificaremos aquellos requisitos que intervienen en el proce
 ### 3.2 Requerimientos Funcionales
 * Registrarse: El usuario deberá proporcionar un nombre, una contraseña, un mail y deberá
 proporcionar acceso a los datos personales del SIAL.
-* Inicio de sesión: Un usuario registrado deberá ser capaz de ingresar a la aplicación.
-* Recuperar contraseña: El usuario registrado deberá ser capaz de recuperar la contraseña
+* Inicio de Sesión: Un usuario registrado deberá ser capaz de ingresar a la aplicación.
+* Cerrar Sesion: El usuario debe poder cerrar seccion de la aplicacion. 
+* Recuperar Contraseña: El usuario registrado deberá ser capaz de recuperar la contraseña
 utilizando el correo registrado.
-* Estado del documento: El ususario debera poder verificar el estado del documento solicitado.
+* Estado del Documento: El ususario debera poder verificar el estado del documento solicitado.
 * Descargar Documentos: El usuario debera ser capaz de descargar documentos.
- 
+* Subir Documento: El usuario administrador debe poder realizar la carga de un documento.
+
 ![Diagrama](class-diagram.jpeg)
 
 
