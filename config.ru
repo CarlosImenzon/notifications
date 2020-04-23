@@ -1,3 +1,8 @@
+require "bundler"
+require "sinatra"
+require 'sequel'
+
+
 Bundler.require
 DB = Sequel.connect(
   adapter: 'postgres',
