@@ -14,7 +14,7 @@ NULLCMD = :
 srcdir = .
 topdir = /usr/local/include/ruby-2.6.0
 hdrdir = $(topdir)
-arch_hdrdir = /usr/local/include/ruby-2.6.0/i686-linux
+arch_hdrdir = /usr/local/include/ruby-2.6.0/x86_64-linux
 PATH_SEPARATOR = :
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
 prefix = $(DESTDIR)/usr/local
@@ -31,8 +31,8 @@ rubyhdrdir = $(includedir)/$(RUBY_VERSION_NAME)
 vendorarchdir = $(vendorlibdir)/$(sitearch)
 vendorlibdir = $(vendordir)/$(ruby_version)
 vendordir = $(rubylibprefix)/vendor_ruby
-sitearchdir = $(DESTDIR)./.gem.20200419-9-1ln5gfo
-sitelibdir = $(DESTDIR)./.gem.20200419-9-1ln5gfo
+sitearchdir = $(DESTDIR)./.gem.20200423-7-1azkzvu
+sitelibdir = $(DESTDIR)./.gem.20200423-7-1azkzvu
 sitedir = $(rubylibprefix)/site_ruby
 rubyarchdir = $(rubylibdir)/$(arch)
 rubylibdir = $(rubylibprefix)/$(ruby_version)
@@ -86,7 +86,7 @@ cppflags =
 CCDLFLAGS = -fPIC
 CFLAGS   = $(CCDLFLAGS) $(cflags)  -fPIC $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
-DEFS     = -D_FILE_OFFSET_BITS=64
+DEFS     = 
 CPPFLAGS = -DRUBY_EXTCONF_H=\"$(RUBY_EXTCONF_H)\" -I/usr/include/postgresql  $(DEFS) $(cppflags)
 CXXFLAGS = $(CCDLFLAGS) $(cxxflags) $(ARCH_FLAG)
 ldflags  = -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic
@@ -105,7 +105,7 @@ RUBY_VERSION_NAME = $(RUBY_BASE_NAME)-$(ruby_version)
 RUBYW_BASE_NAME = rubyw
 RUBY_BASE_NAME = ruby
 
-arch = i686-linux
+arch = x86_64-linux
 sitearch = $(arch)
 ruby_version = 2.6.0
 ruby = $(bindir)/$(RUBY_BASE_NAME)
@@ -125,8 +125,8 @@ TOUCH = exit >
 #### End of system configuration section. ####
 
 preload = 
-libpath = . $(libdir) /usr/lib/i386-linux-gnu
-LIBPATH =  -L. -L$(libdir) -Wl,-rpath,$(libdir) -L/usr/lib/i386-linux-gnu -Wl,-rpath,/usr/lib/i386-linux-gnu
+libpath = . $(libdir) /usr/lib/x86_64-linux-gnu
+LIBPATH =  -L. -L$(libdir) -Wl,-rpath,$(libdir) -L/usr/lib/x86_64-linux-gnu -Wl,-rpath,/usr/lib/x86_64-linux-gnu
 DEFFILE = 
 
 CLEANFILES = mkmf.log
@@ -141,7 +141,7 @@ LIBS = $(LIBRUBYARG_SHARED) -lpq  -lm   -lc
 ORIG_SRCS = gvl_wrappers.c pg.c pg_binary_decoder.c pg_binary_encoder.c pg_coder.c pg_connection.c pg_copy_coder.c pg_errors.c pg_record_coder.c pg_result.c pg_text_decoder.c pg_text_encoder.c pg_tuple.c pg_type_map.c pg_type_map_all_strings.c pg_type_map_by_class.c pg_type_map_by_column.c pg_type_map_by_mri_type.c pg_type_map_by_oid.c pg_type_map_in_ruby.c pg_util.c
 SRCS = $(ORIG_SRCS) 
 OBJS = gvl_wrappers.o pg.o pg_binary_decoder.o pg_binary_encoder.o pg_coder.o pg_connection.o pg_copy_coder.o pg_errors.o pg_record_coder.o pg_result.o pg_text_decoder.o pg_text_encoder.o pg_tuple.o pg_type_map.o pg_type_map_all_strings.o pg_type_map_by_class.o pg_type_map_by_column.o pg_type_map_by_mri_type.o pg_type_map_by_oid.o pg_type_map_in_ruby.o pg_util.o
-HDRS = $(srcdir)/pg.h $(srcdir)/pg_util.h $(srcdir)/extconf.h $(srcdir)/gvl_wrappers.h
+HDRS = $(srcdir)/pg_util.h $(srcdir)/extconf.h $(srcdir)/gvl_wrappers.h $(srcdir)/pg.h
 LOCAL_HDRS = 
 TARGET = pg_ext
 TARGET_NAME = pg_ext
