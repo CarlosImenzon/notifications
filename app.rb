@@ -2,22 +2,20 @@ require 'json'
 require './models/init.rb'
 class App < Sinatra::Base
  
-
+  get "/" do 
+    erb :docs
+  end
   get "/login" do
     erb :login
-  end 
-   
+
+  end   
   get "/signup" do
     erb :signup 
   end 
 
-   get "/" do 
-    erb :docs
-  end
-
   post '/login' do
-    if  param[:username] =='Juan' 
-        param[:password] =='123'
+    if  params[:email] == "Carlos"
+        params[:password] == "1234" 
       "Correcto" 
     else 
         @error = 'Usuario o contraseña incorrectos'
@@ -25,12 +23,16 @@ class App < Sinatra::Base
     end
   end
 
+
   post '/signup' do
-    user = User.new(name: param["name"], email: param["email"], username: param["username"], password: param["password"])
+    user = User.new(name: params["fullname"], email: params["email"], password: params["password"])
     if user.save
       redirect "/"
     else 
+      [500, {}, "Internal server Error"]
     end 
   end
-end
 
+
+
+end 

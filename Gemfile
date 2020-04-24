@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 
 gem 'puma', '4.3.3'
 gem 'sinatra', '2.0.7'
-gem 'sinatra-contrib'
 gem 'sequel'
 gem 'pg'
 
