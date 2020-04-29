@@ -15,8 +15,8 @@ class App < Sinatra::Base
   end 
 
   post '/login' do
-    if  params[:email] == "Carlos"
-        params[:password] == "1234" 
+    if  params[:username]
+        params[:password] 
       "Correcto" 
     else 
         @error = 'Usuario o contraseña incorrectos'
@@ -24,16 +24,17 @@ class App < Sinatra::Base
     end
   end
 
-
   post '/signup' do
-    user = User.new(name: params["fullname"], email: params["email"], password: params["password"])
+    request.body.rewind
+    hash = Rack::Utils.parse_nested_query(request.body.read)
+    params = JSON.parse hash.to_json 
+    # User.create(name: name)
+    user = User.new(name: params["name"], email: params["email"], username: params["username"], password: params["password"])
     if user.save
-      redirect "/"
-    else 
-      [500, {}, "Internal server Error"]
-    end 
+      "USER CREATED"
+    else
+      [500, {}, "Internal Server Error"]
+    end
   end
+end
 
-
-
-end 
