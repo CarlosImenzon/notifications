@@ -6,16 +6,19 @@
 	</head>
 	<body>
 		<header class="header">
+			<td><form method="POST" action="/layout">
 			<div class="container logo-nav-container">
-				<a href="/" class="title">Sistema de notificación</a>
-				<nav class="navigation">
-					<ul>
-                        <li><a href="/"> Documentos </a></li>                     
-                        <li><a href="/signup">Registrarse</a></li> 
-                        <li><a href="/login">Iniciar Sesión</a></li>
-                    </ul>
-				</nav>
+					<a href="/" class="title">Sistema de notificación</a>
+					<nav class="navigation">
+						<ul>
+	                        <li><a href="/document"> Documentos </a></li>                     
+	                        <li><a href="/signup">Registrarse</a></li> 
+	                        <li><a href="/login">Iniciar Sesión</a></li>
+	                    </ul>
+					</nav>
 			</div>
+			</form>
+			</td>
 		</header>
 		<%= yield %>
 	</body>

@@ -6,7 +6,7 @@ class App < Sinatra::Base
  
 
   get "/" do 
-    erb :docs
+    erb :index
   end
 
   get "/login" do
@@ -17,6 +17,9 @@ class App < Sinatra::Base
     erb :signup
   end 
 
+  get "/document" do
+  	erb :document
+  end
 
   post '/login' do
     user = User.find(username: params[:username])
@@ -26,7 +29,7 @@ class App < Sinatra::Base
         #redirect "/"
       else
         @error ="Your username o password is incorrect"
-        erb :login, :layout => :layout
+        erb :login
       end
   end
 
@@ -43,6 +46,13 @@ class App < Sinatra::Base
       [500, {}, "Internal Server Error"]
        erb :signup
     end
+  end
+
+  post '/document' do
+  	request.body.rewind
+    hash = Rack::Utils.parse_nested_query(request.body.read)
+    params = JSON.parse hash.to_json 
+    document = Document.new(title: params["title"], topic: params["topic"])
   end
 end
 
