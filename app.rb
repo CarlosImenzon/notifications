@@ -1,6 +1,5 @@
 require 'json'
 require './models/init.rb'
-require './models/user.rb'
 
 class App < Sinatra::Base
  
@@ -21,17 +20,22 @@ class App < Sinatra::Base
   	erb :document
   end
 
+  get "/documents" do
+    @documents = Document.all 
+    erb :documents
+  end
+
   post '/login' do
     user = User.find(username: params[:username])
     if user && user.password == params[:password]
         session[:id] = user.id
-        erb :login
         #redirect "/"
       else
-        @error ="Your username o password is incorrect"
         erb :login
+        @error ="Tu usuario o contraseña son incorrectos"
       end
   end
+
 
   post '/signup' do
     request.body.rewind
@@ -48,11 +52,18 @@ class App < Sinatra::Base
     end
   end
 
+
   post '/document' do
   	request.body.rewind
     hash = Rack::Utils.parse_nested_query(request.body.read)
     params = JSON.parse hash.to_json 
     document = Document.new(title: params["title"], topic: params["topic"])
+    if document.save
+      "Documento cargado"
+    else
+      [500, {}, "Internal Server Error"]
+      erb :document
+    end
   end
 end
 
