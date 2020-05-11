@@ -1,21 +1,10 @@
-<!DOCTYPE html>
-<html>
-	<body>	
-		</header>
-			<tr>
-				<th><h3>Iniciar Sesión</h3></th>
-			</tr>
-			<tr>
-				<td><form method="POST" action="/login">
-					<p>Your username: <input type="text" username="username"></p>
-					<p>Your password: <input type="password" name="password"></p>
-					<% if @error %>
-    					<p class="error"><%= @error %></p>
-  					<% end %>
-					</br><input type="submit" name="Log In" value="LOG IN" /></p> 
-					<a href="/"> Atras </a>	
-					</form>
-				</td>
-			</tr>	
-	</body>
-</html>
+</header>
+	<th><h3>Iniciar Sesión</h3></th>
+		<form method="POST" action="/login">
+			<p>Usuario: <input type="text" username="username"></p>
+			<p>Contraseña: <input type="password" name="password"></p>
+			<% if @error %>
+    			<p class="error"><%= @error %></p>
+  			<% end %>
+			</br><input type="submit" name="LOG IN" value="Iniciar Sesión" /></p> 
+		</form>	
