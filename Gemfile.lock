@@ -51,6 +51,7 @@ PLATFORMS
 DEPENDENCIES
   activemodel
   dotenv (= 2.7.5)
+  minitest
   pg
   puma (= 4.3.3)
   rerun
