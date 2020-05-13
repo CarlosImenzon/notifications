@@ -27,6 +27,8 @@ GEM
     rack (2.2.2)
     rack-protection (2.0.7)
       rack
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -39,6 +41,7 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.7)
       tilt (~> 2.0)
+    sqlite3 (1.4.2)
     thread_safe (0.3.6)
     tilt (2.0.10)
     tzinfo (1.2.7)
@@ -54,9 +57,11 @@ DEPENDENCIES
   minitest
   pg
   puma (= 4.3.3)
+  rack-test
   rerun
   sequel
   sinatra (= 2.0.7)
+  sqlite3
 
 RUBY VERSION
    ruby 2.6.4p104

@@ -3,6 +3,7 @@ require 'minitest/autorun'
 require 'rack/test'
 require 'sequel'
 require 'sinatra'
+
 DB = Sequel.connect(
   adapter: 'postgres',
   database: 'notificator_test',
