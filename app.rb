@@ -43,9 +43,10 @@ class App < Sinatra::Base
     params = JSON.parse hash.to_json 
     # User.create(name: name)
     user = User.new(name: params["name"], email: params["email"], username: params["username"], password: params["password"])
-    if user.save
+    if  user.valid?
+       user.save
       "USER CREATED"
-       erb :signup
+      erb :signup
     else
       [500, {}, "Internal Server Error"]
        erb :signup
