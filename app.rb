@@ -1,10 +1,23 @@
+require 'sinatra/base'
 require 'json'
 require './models/init.rb'
+require './models/user.rb'
 
 class App < Sinatra::Base
- 
+  configure :development do
+  enable :logging
+  enable :session
+  set :session_secret, “secret”
+  set :sessions, true
+  end
 
-  get "/" do 
+  get "/" do
+    logger.info ""
+    logger.info “session information”
+    logger.info session["session_id"]
+    logger.info session.inspect
+    logger.info "--------------"
+    logger.info ""
     erb :index
   end
 
@@ -27,12 +40,15 @@ class App < Sinatra::Base
 
   post '/login' do
     user = User.find(username: params[:username])
-    if user && user.password == params[:password]
-        session[:id] = user.id
+    if User.last.id
+        #user && user.password == params[:password]
+        session[:user.username] == user.last.username
+        session[:user.name] == user.last.name
+        session[:user.id] == user.last.id
         #redirect "/"
       else
         erb :login
-        @error ="Tu usuario o contraseña son incorrectos"
+        [400, {"Content-Type" => "text/plain"}, ["Unautorized"]]
       end
   end
 
@@ -43,10 +59,8 @@ class App < Sinatra::Base
     params = JSON.parse hash.to_json 
     # User.create(name: name)
     user = User.new(name: params["name"], email: params["email"], username: params["username"], password: params["password"])
-    if  user.valid?
-       user.save
-      "USER CREATED"
-      erb :signup
+    if  user.save
+      erb :login
     else
       [500, {}, "Internal Server Error"]
        erb :signup
