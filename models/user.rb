@@ -3,8 +3,8 @@ class User < Sequel::Model
 	def validate
 		super
 		validates_presence [:name, :username, :email, :password]
-		validates_format /\A.*@.*\..*\z/, :email, message: 'Error'
-		errors.add(:name, 'cannot be empty') if !name || name.empty?
+		#nombre y mail unicos
+		validates_format /\A.*@.*\..*\z/, :email
 	end
 	many_to_many :documents
 	set_primary_key :id
