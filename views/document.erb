@@ -3,18 +3,13 @@
 		<form method="POST" action="/document">
 			<p>Titulo: <input type="text" name="title"></p>
 			<p>Tema: <input type="text" name="topic"></p>
+			 <button type="button" onclick="document.getElementById('fileInput').click();">Examinar...</button> 
+             <input id="fileInput" type="file" accept= ".pdf, .jpg, .jpeg, .png" onChange='getFileExtension()' style="display: none;" /> <br>
 			<th><h2>Etiquetas</h2></th>
+			<p>Etiqueta: <input type="text" name="tag"></p>
 			<!--<p>Etiqueta: <input type="text" name="tag"></p>
-			-<p>Etiqueta: <input type="text" name="tag"></p>
 			<p>Etiqueta: <input type="text" name="tag"></p>
-			<p>Etiqueta: <input type="text" name="tag"></p>
-			<p>Etiqueta: <input type="text" name="tag"></p>
-			<p>Etiqueta: <input type="text" name="tag"></p>
-			<p>Etiqueta: <input type="text" name="tag"></p>
-			<p>Etiqueta: <input type="text" name="tag"></p>
-			<p>Etiqueta: <input type="text" name="tag"></p>
-			<p>Etiqueta: <input type="text" name="tag"></p>
-			-->
+			<p>Etiqueta: <input type="text" name="tag"></p>-->
 			</br><input type="submit" name="ENVIAR" value="ENVIAR" /></p>
 		</form>
 				

@@ -1,7 +1,7 @@
 </header>
 	<th><h3>Iniciar Sesión</h3></th>
 		<form method="POST" action="/login">
-			<p>Usuario: <input type="text" username="username"></p>
+			<p>Usuario: <input type="text" name="username"></p>
 			<p>Contraseña: <input type="password" name="password"></p>
 			<% if @error %>
     			<p class="error"><%= @error %></p>
