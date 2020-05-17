@@ -34,7 +34,12 @@ class App < Sinatra::Base
     else
       erb :login
     end
-  end   
+  end 
+
+  get "/logout" do
+    session.clear
+    erb :logout
+  end
 
   get "/signup" do
     if session[:user_id]
@@ -60,9 +65,9 @@ class App < Sinatra::Base
     if usuario && usuario.password == params['password']
       session[:user_id] = usuario.id
       redirect '/'
-      else
-        redirect '/signup'
-        [400, {"Content-Type" => "text/plain"}, ["Unautorized"]]
+      else 
+        @error ="Su nombre o contraseña es incorrecto"
+        erb :login
       end
   end
 
