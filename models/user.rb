@@ -3,7 +3,8 @@ class User < Sequel::Model
 	def validate
 		super
 		validates_presence [:name, :username, :email, :password]
-		#nombre y mail unicos
+		validates_unique [:username]
+		validates_unique [:email]
 		validates_format /\A.*@.*\..*\z/, :email
 	end
 	many_to_many :documents
