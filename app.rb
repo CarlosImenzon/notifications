@@ -19,8 +19,8 @@ class App < Sinatra::Base
     @path = request.path_info
     if !session[:user_id] && @path != '/login' && @path != '/signup'
       redirect '/login'
-    elsif session[:user_id]
-      @user = User.find(id: session[:user_id])
+      elsif session[:user_id]
+     @user = User.find(id: session[:user_id])
     end
   end
 
@@ -45,7 +45,6 @@ class App < Sinatra::Base
     if session[:user_id]
       session.clear
     end
-    erb :signup
   end 
 
   get "/document" do
@@ -61,9 +60,9 @@ class App < Sinatra::Base
 
 
   post '/login' do
-    usuario = User.find(username: params[:username])
-    if usuario && usuario.password == params['password']
-      session[:user_id] = usuario.id
+    @user = User.find(username: params[:username])
+    if @user && @user.password == params['password']
+      session[:user_id] = @user.id
       redirect '/'
       else 
         @error ="Su nombre o contraseña es incorrecto"
