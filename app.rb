@@ -44,6 +44,8 @@ class App < Sinatra::Base
   get "/signup" do
     if session[:user_id]
       session.clear
+    else
+      erb :signup
     end
   end 
 
