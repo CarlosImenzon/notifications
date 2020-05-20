@@ -51,12 +51,13 @@ class App < Sinatra::Base
 
   get "/document" do
     if session[:user_id]
+      @users = User.order(:username)
       erb :document
     end
   end
 
   get "/documents" do
-      @documents = Document.all 
+      @documents = Document.all
       erb :documents
   end
 
@@ -85,15 +86,18 @@ class App < Sinatra::Base
       [500, {}, "Internal Server Error"]
        erb :signup
     end
-  end
-
-
+  end                                                          
+  
   post '/document' do
-  	request.body.rewind
-    hash = Rack::Utils.parse_nested_query(request.body.read)
-    params = JSON.parse hash.to_json 
-    document = Document.new(title: params["title"], topic: params["topic"], tag: params["tag"])
-    if document.save
+    @filename = params[:fileInput][:filename]                                          
+    file = params[:fileInput][:tempfile]
+    document = Document.new(title: params["title"], topic: params["topic"], file: @filename)
+    if document.save 
+      tagusers = params["multi_select"] 
+      tagusers.each do |d| 
+        Relation.new(document_id: document.id, user_id: d.id).save
+      end  
+      cp(file.path, "public/#{document.id}#{document.file}")
       "Documento cargado"
       redirect '/'
     else
