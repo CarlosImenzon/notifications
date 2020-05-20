@@ -1,8 +1,22 @@
-<% @documents.each do |d| %>
-<ul> 
-	<li><%=d.title%></li>
-	<li><%=d.topic%></li>
-	<li><%=d.tag%></li>
-	<li><%=d.id%></li>
-</ul>
-<%end%>
+<div class="container">
+<table class="table table-striped">
+  <thead>
+      <tr>
+        <th>Id</th>
+        <th>Titulo</th>
+        <th>Tema</th>
+        <th>Archivo</th>
+      </tr>
+    </thead>
+  <tbody>
+  	<% @documents.each do |d| %>
+  <tr>
+  	<td><%=d.id%></td>
+    <td><%=d.title %></td>
+    <td><%=d.topic %></td>
+    <td><%=d.file %></td>
+    <%end%>
+  </tr>
+  </tbody>
+</table>
+</div>
