@@ -15,15 +15,14 @@
 			</br>
 		    <label for="exampleFormControlSelect2">Seleccionar usuarios</label>
 		    <select multiple class="form-control" name="multi_select[]" id="exampleFormControlSelect2">
-			<% @users.each do |u| %>
-  				<option value=<% u.id%>><%=u.username%></option>
-   			<%end%>
+					<% @users.each do |u| %>
+  					<option value='<%=u.id%>'>
+							<%=u.username%>
+						</option>
+   				<%end%>
    			</select>
 			</div>
 			</br>
 			<button type="submit" class="btn btn-primary">Crear Documento</button>
 		</form>
 </div>
-				
-				
-	
