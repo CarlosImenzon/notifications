@@ -89,14 +89,14 @@ class App < Sinatra::Base
   end                                                          
   
   post '/document' do
-    @filename = params[:fileInput][:filename]                                          
+    @filename = params[:fileInput][:filename]
     file = params[:fileInput][:tempfile]
     document = Document.new(title: params["title"], topic: params["topic"], file: @filename)
-    if document.save 
-      tagusers = params["multi_select"] 
-      tagusers.each do |d| 
-        Relation.new(document_id: document.id, user_id: d.id).save
-      end  
+    if document.save
+      tagusers = params["multi_select"]
+      tagusers.each do |u|
+        Relation.new(document_id: document.id, user_id: u.to_i).save
+      end
       cp(file.path, "public/#{document.id}#{document.file}")
       "Documento cargado"
       redirect '/'
