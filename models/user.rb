@@ -8,5 +8,6 @@ class User < Sequel::Model
 		validates_format /\A.*@.*\..*\z/, :email
 	end
 	many_to_many :documents
-	set_primary_key :id
+	one_to_many :relations
+
 end

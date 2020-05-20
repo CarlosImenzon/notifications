@@ -6,5 +6,5 @@ class Document < Sequel::Model
         	validates_unique [:title]
   		end
 		many_to_many  :users
-		set_primary_key :id
+		one_to_many :relations
 end
