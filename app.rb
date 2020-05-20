@@ -91,7 +91,7 @@ class App < Sinatra::Base
   post '/document' do
     @filename = params[:fileInput][:filename]
     file = params[:fileInput][:tempfile]
-    document = Document.new(title: params["title"], topic: params["topic"], file: @filename)
+    document = Document.create(title: params["title"], topic: params["topic"], file: @filename)
     if document.save
       tagusers = params["multi_select"]
       tagusers.each do |u|
