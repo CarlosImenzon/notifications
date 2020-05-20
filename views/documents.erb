@@ -1,4 +1,7 @@
 <div class="container">
+  </br>
+  <center><h3>Mis Documentos</h3></center>
+  </br>
 <table class="table table-striped">
   <thead>
       <tr>
@@ -6,15 +9,17 @@
         <th>Titulo</th>
         <th>Tema</th>
         <th>Archivo</th>
+        <th>Action</th>
       </tr>
     </thead>
   <tbody>
-  	<% @documents.each do |d| %>
+    <% @documents.each do |d| %>
   <tr>
-  	<td><%=d.id%></td>
+    <td><%=d.id%></td>
     <td><%=d.title %></td>
     <td><%=d.topic %></td>
     <td><%=d.file %></td>
+    <td><a href="<%"#{d.id}#{d.file}"%>" download="document.png">Descargar Archivo</a></td>
     <%end%>
   </tr>
   </tbody>
