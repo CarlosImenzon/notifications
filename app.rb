@@ -57,7 +57,7 @@ class App < Sinatra::Base
   end
 
   get "/documents" do
-      @documents = Document.all
+      @documents = @user.documents
       erb :documents
   end
 
