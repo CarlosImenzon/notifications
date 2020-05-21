@@ -52,13 +52,18 @@ class App < Sinatra::Base
   get "/save_document" do
     if session[:user_id]
       @users = User.order(:username)
-      erb :document
+      erb :save_document
     end
   end
 
   get "/documents" do
-      @documents = @user.documents
-      erb :documents
+      if session[:user_id] && @user.admin == 1
+        @documents = Document.all
+        erb :documents
+      else
+        @documents = @user.documents
+        erb :documents
+      end
   end
 
 
@@ -101,7 +106,7 @@ class App < Sinatra::Base
       redirect '/'
     else
       [500, {}, "Internal Server Error"]
-      erb :document
+      erb :save_document
     end
   end
 end
