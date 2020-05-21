@@ -1,10 +1,25 @@
-<div class="container">
-    <h3> Registrarse </h3>
-            <form method="POST" action="/signup">
-                        <p>Nombre: <input type="text" name="name"></p>
-                        <p>Email: <input type="text" name="email"></p>
-                        <p>Usuario: <input type="text" name="username"></p>
-                        <p>Contraseña: <input type="password" name="password"></p>
-                        </br><input type="submit" name="SIGN UP" value="Registrar" /></p>
-            </form>
-</div>                      
+<div class="container signup-container">
+                <div class="col-md-6 login-form-2">
+                    <h3>Registrarse</h3>
+                    <form method="POST" action="/signup">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="name" placeholder="Nombre"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="email" placeholder="Email"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="username" placeholder="Username"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Contraseña" name="password" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="SIGN UP" value="Registrar" />
+                        </div>
+                        <div class="form-group">
+                        </div>
+                    </form>
+                </div>
+            </div>
+</div>
