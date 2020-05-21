@@ -12,7 +12,7 @@ class UserTest < Minitest::Unit::TestCase
 	end
 
   	def test_create_user 
-    	@user  = User.create(name: "carlos",password: "123456", username: "imenzon",email: "c@gmail.com")
+    	@user  = User.create(name: "carlos",password: "123456", username: "imenzon",email: "c@gmail.com", admin: 0)
     	assert_equal @user.valid?, true
   	end
 

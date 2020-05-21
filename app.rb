@@ -20,7 +20,7 @@ class App < Sinatra::Base
     if !session[:user_id] && @path != '/login' && @path != '/signup'
       redirect '/login'
       elsif session[:user_id]
-     @user = User.find(id: session[:user_id])
+        @user = User.find(id: session[:user_id])
     end
   end
 
@@ -42,14 +42,14 @@ class App < Sinatra::Base
   end
 
   get "/signup" do
-    if session[:user_id]
-      session.clear
-    else
-      erb :signup
-    end
-  end 
+     if session[:user_id]
+        session.clear
+      else
+        erb :signup
+      end 
+  end
 
-  get "/document" do
+  get "/save_document" do
     if session[:user_id]
       @users = User.order(:username)
       erb :document
@@ -78,7 +78,6 @@ class App < Sinatra::Base
     request.body.rewind
     hash = Rack::Utils.parse_nested_query(request.body.read)
     params = JSON.parse hash.to_json 
-    # User.create(name: name)
     user = User.new(name: params["name"], email: params["email"], username: params["username"], password: params["password"], admin: 0)
     if  user.save
       erb :login
@@ -88,7 +87,7 @@ class App < Sinatra::Base
     end
   end                                                          
   
-  post '/document' do
+  post '/save_document' do
     @filename = params[:fileInput][:filename]
     file = params[:fileInput][:tempfile]
     document = Document.create(title: params["title"], topic: params["topic"], file: @filename)
