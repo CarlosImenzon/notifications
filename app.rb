@@ -84,10 +84,11 @@ class App < Sinatra::Base
     hash = Rack::Utils.parse_nested_query(request.body.read)
     params = JSON.parse hash.to_json 
     user = User.new(name: params["name"], email: params["email"], username: params["username"], password: params["password"], admin: 0)
-    if  user.save
+    if  user.valid?
+      user.save
       erb :login
     else
-      [500, {}, "Internal Server Error"]
+       @error ="Su username o email ya existe"
        erb :signup
     end
   end                                                          
