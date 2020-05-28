@@ -66,6 +66,9 @@ class App < Sinatra::Base
       end
   end
 
+  get "/change_pass" do
+    erb :change_pass
+  end
 
   post '/login' do
     @user = User.find(username: params[:username])
@@ -94,6 +97,7 @@ class App < Sinatra::Base
   end                                                          
   
   post '/save_document' do
+    File.chmod(0777, "public/")
     @filename = params[:fileInput][:filename]
     file = params[:fileInput][:tempfile]
     document = Document.create(title: params["title"], topic: params["topic"], file: @filename)
@@ -103,6 +107,7 @@ class App < Sinatra::Base
         Relation.new(document_id: document.id, user_id: u.to_i).save
       end
       cp(file.path, "public/#{document.id}#{document.file}")
+      File.chmod(0777, "public/#{document.id}#{document.file}")
       "Documento cargado"
       redirect '/'
     else
@@ -110,5 +115,24 @@ class App < Sinatra::Base
       erb :save_document
     end
   end
+
+  post '/change_pass' do
+    request.body.rewind
+    hash = Rack::Utils.parse_nested_query(request.body.read)
+    params = JSON.parse hash.to_json
+    if params["password1"] != params["password2"]
+      @error ="Las contraseñas no coinciden"
+      erb :change_pass 
+    else  
+      if @user.update(password: params["password1"])
+        session.clear
+        erb :login
+      else
+        @error ="Error al cambiar contraseña o ingresaste la misma contraseña"
+        erb :change_pass
+      end
+    end  
+  end
+
 end
 
