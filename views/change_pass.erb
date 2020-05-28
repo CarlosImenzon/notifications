@@ -1,0 +1,21 @@
+<div class="container change_pass-container">
+    <div class="col-md-6 change_pass-form-2">
+        <h3>Cambiar contraseña</h3>
+        <form method="POST" action="/change_pass">
+            <div class="form-group">
+                <input type="password" class="form-control" name="password1" placeholder="Nueva Contraseña" />
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control"  name="password2" placeholder="Confirmar Contraseña" />
+            </div>
+            <div class="form-group">
+                <center><input type="submit" class="btnSubmit" value="Confirmar" /></center>
+            </div>
+            <div class="form-group">
+            </div>
+            <% if @error %>
+                <p class="error"><%= @error %></p>
+            <% end %>
+        </form>
+    </div>
+</div>
