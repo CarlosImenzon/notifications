@@ -8,8 +8,8 @@
 
 .signup-form-2{
     padding: 5%;
-    background: #34302E;
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    background: #343a40 !important;
+    box-shadow: 0 5px 8px 0 #343a40, 0 9px 26px 0 rgba(0, 0, 0, 0.19);
 }
 .signup-form-2 h3{
     text-align: center;
