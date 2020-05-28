@@ -5,21 +5,19 @@
 <table class="table table-striped">
   <thead>
       <tr>
-        <th>Id</th>
         <th>Titulo</th>
         <th>Tema</th>
         <th>Archivo</th>
         <th>Action</th>
       </tr>
     </thead>
-  <tbody>
+  <tbody> 
     <% @documents.each do |d| %>
   <tr>
-    <td><%=d.id%></td>
     <td><%=d.title %></td>
     <td><%=d.topic %></td>
     <td><%=d.file %></td>
-    <td><a href="<%"#{d.id}#{d.file}"%>" download="document.pdf">Descargar Archivo</a></td>
+    <td><a href = "<%="#{d.id}#{d.file}"%>" target="_blank" >Ver</a></td>
     <%end%>
   </tr>
   </tbody>
