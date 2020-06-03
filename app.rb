@@ -15,7 +15,7 @@ class App < Sinatra::Base
   set :sessions, true
   end
 
-   before do 
+   before do
     @path = request.path_info
     if !session[:user_id] && @path != '/login' && @path != '/signup'
       redirect '/login'
@@ -34,7 +34,7 @@ class App < Sinatra::Base
     else
       erb :login
     end
-  end 
+  end
 
   get "/logout" do
     session.clear
@@ -46,7 +46,7 @@ class App < Sinatra::Base
         session.clear
       else
         erb :signup
-      end 
+      end
   end
 
   get "/save_document" do
@@ -70,12 +70,15 @@ class App < Sinatra::Base
     erb :change_pass
   end
 
+  get "/profile" do
+    erb :profile
+  end
   post '/login' do
     @user = User.find(username: params[:username])
     if @user && @user.password == params['password']
       session[:user_id] = @user.id
       redirect '/'
-      else 
+      else
         @error ="Su nombre o contraseña es incorrecto"
         erb :login
       end
@@ -85,7 +88,7 @@ class App < Sinatra::Base
   post '/signup' do
     request.body.rewind
     hash = Rack::Utils.parse_nested_query(request.body.read)
-    params = JSON.parse hash.to_json 
+    params = JSON.parse hash.to_json
     user = User.new(name: params["name"], email: params["email"], username: params["username"], password: params["password"], admin: 0)
     if  user.valid?
       user.save
@@ -94,8 +97,8 @@ class App < Sinatra::Base
        @error ="Su username o email ya existe"
        erb :signup
     end
-  end                                                          
-  
+  end
+
   post '/save_document' do
     File.chmod(0777, "public/")
     @filename = params[:fileInput][:filename]
@@ -122,8 +125,8 @@ class App < Sinatra::Base
     params = JSON.parse hash.to_json
     if params["password1"] != params["password2"]
       @error ="Las contraseñas no coinciden"
-      erb :change_pass 
-    else  
+      erb :change_pass
+    else
       if @user.update(password: params["password1"])
         session.clear
         erb :login
@@ -131,8 +134,7 @@ class App < Sinatra::Base
         @error ="Error al cambiar contraseña o ingresaste la misma contraseña"
         erb :change_pass
       end
-    end  
+    end
   end
 
 end
-
