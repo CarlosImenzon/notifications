@@ -1,6 +1,6 @@
 <div class="container">
 	<h3>Nuevo Documento</h3>
-		<form action="/save_document" method="POST" enctype="multipart/form-data">
+		<form  id="form" action="/save_document" method="POST" enctype="multipart/form-data">
 			<div class="form-group">
 			    <input type="text" name="title" class="form-control" placeholder="Titulo">
   			</div>
@@ -24,5 +24,6 @@
 			</div>
 			</br>
 			<button type="submit" class="btn btn-primary">Crear Documento</button>
+			<div id="msgs"></div>
 		</form>
 </div>

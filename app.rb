@@ -4,15 +4,21 @@ require './models/init.rb'
 require './models/user.rb'
 require 'date'
 require 'net/http'
+require 'sinatra'
+require 'sinatra-websocket'
+
 
 include FileUtils::Verbose
 class App < Sinatra::Base
 
+
   configure :development do
-  enable :logging
-  enable :session
-  set :session_secret, "Secreto"
-  set :sessions, true
+    enable :logging
+    enable :session
+    set :session_secret, "Secreto"
+    set :sessions, true
+    set :server, 'thin'
+    set :sockets, [] 
   end
 
    before do
@@ -42,11 +48,11 @@ class App < Sinatra::Base
   end
 
   get "/signup" do
-     if session[:user_id]
-        session.clear
-      else
-        erb :signup
-      end
+    if session[:user_id]
+      session.clear
+    else
+      erb :signup
+    end
   end
 
   get "/save_document" do
@@ -56,14 +62,15 @@ class App < Sinatra::Base
     end
   end
 
+
   get "/documents" do
-      if session[:user_id] && @user.admin == 1
-        @documents = Document.all
-        erb :documents
-      else
-        @documents = @user.documents
-        erb :documents
-      end
+    if session[:user_id] && @user.admin == 1
+      @documents = Document.all
+      erb :documents
+    else
+      @documents = @user.documents
+      erb :documents
+    end
   end
 
   get "/change_pass" do
@@ -73,6 +80,7 @@ class App < Sinatra::Base
   get "/profile" do
     erb :profile
   end
+
   post '/login' do
     @user = User.find(username: params[:username])
     if @user && @user.password == params['password']
@@ -107,8 +115,8 @@ class App < Sinatra::Base
     if document.save
       tagusers = params["multi_select"]
       tagusers.each do |u|
-        Relation.new(document_id: document.id, user_id: u.to_i).save
-      end
+      Relation.new(document_id: document.id, user_id: u.to_i).save
+    end
       cp(file.path, "public/#{document.id}#{document.file}")
       File.chmod(0777, "public/#{document.id}#{document.file}")
       "Documento cargado"
@@ -136,5 +144,6 @@ class App < Sinatra::Base
       end
     end
   end
-
 end
+
+
