@@ -12,8 +12,8 @@ class UserTest < Minitest::Unit::TestCase
 	end
 
   	def test_create_user 
-    	@user  = User.create(name: "carlos",password: "123456", username: "imenzon",email: "c@gmail.com", admin: 0)
-    	assert_equal @user.valid?, true
+    	user  = User.new(name: "carlos01" ,password: "123456", username: "imenzoon",email: "carlos@gmail.com", admin: 0)
+    	assert_equal user.valid?, true
   	end
 
   	def test_create_user_presence_name
