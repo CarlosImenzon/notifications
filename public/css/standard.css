@@ -1,0 +1,48 @@
+.text-white {
+    color: #fff !important;
+    font-weight : bold;
+}
+
+.standard-container{
+    margin-top: 4%;
+    margin-bottom: 3%;
+    margin-left: 25%;
+    position: relative;
+}
+
+.standard-form-2{
+    padding: 1%;
+    background: #343a40 !important;
+    box-shadow: 0 5px 5px 0 #343a40, 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.standard-form-2 h3{
+    text-align: center;
+    color: #fff;
+}
+
+.standard-container form{
+    padding: 10%;
+    padding-top: 10%;
+    padding-bottom: 2%;
+}
+
+.btnSubmit {
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+
+.standard-form-2 .btnSubmit{
+    font-weight: 600;
+    color: #0062cc;
+    background-color: #fff;
+}
+
+.standard-form-2 .ForgetPwd{
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}

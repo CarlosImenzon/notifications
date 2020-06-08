@@ -1,0 +1,36 @@
+.text-white {
+    color: #fff !important;
+    font-weight : bold;
+}
+.ui-bg-overlay-container, .ui-bg-video-container {
+    position: relative;
+    top: 50px;
+}
+
+.ui-w-100 {
+    width: 200px !important;
+    height: auto;
+}
+
+.btnSubmit
+{
+    width: 100%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+    margin-top: 15%;
+}
+
+.profilebtn .btnSubmit{
+    font-weight: 600;
+    color: #0062cc;
+    background-color: #fff;
+}
+}
+
+@media (min-width: 992px){
+    .container, .container-fluid {
+        padding-right: 1rem;
+        padding-left: 5rem;
+}
