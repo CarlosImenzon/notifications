@@ -18,7 +18,7 @@ class App < Sinatra::Base
     set :session_secret, "Secreto"
     set :sessions, true
     set :server, 'thin'
-    set :sockets, [] 
+    set :sockets, []
   end
 
    before do
@@ -75,6 +75,10 @@ class App < Sinatra::Base
 
   get "/change_pass" do
     erb :change_pass
+  end
+
+  get "/change_mail" do
+    erb :change_mail
   end
 
   get "/profile" do
@@ -144,6 +148,21 @@ class App < Sinatra::Base
       end
     end
   end
+
+  post '/change_mail' do
+    request.body.rewind
+    hash = Rack::Utils.parse_nested_query(request.body.read)
+    params = JSON.parse hash.to_json
+    if params["email1"] != params["email2"]
+      @error ="Los email no coinciden"
+      erb :change_mail
+    else
+      if @user.update(email: params["email1"])
+        erb :profile
+      else
+        @error ="Error al cambiar email o ingresaste el mismo email"
+        erb :change_mail
+      end
+    end
+  end
 end
-
-
