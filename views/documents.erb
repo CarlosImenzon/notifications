@@ -1,22 +1,22 @@
 <div class="container">
   </br>
-  <center><h3>Mis Documentos</h3></center>
+  <center><h2 class="text-white">Mis Documentos</h2></center>
   </br>
-<table class="table table-striped">
+  <table class="table table-striped">
   <thead>
       <tr>
-        <th>Titulo</th>
-        <th>Tema</th>
-        <th>Archivo</th>
-        <th>Action</th>
+        <th class="text-white">Titulo</th>
+        <th class="text-white">Tema</th>
+        <th class="text-white">Archivo</th>
+        <th class="text-white">Action</th>
       </tr>
     </thead>
   <tbody> 
     <% @documents.each do |d| %>
   <tr>
-    <td><%=d.title %></td>
-    <td><%=d.topic %></td>
-    <td><%=d.file %></td>
+    <td class="text-white"><%=d.title %></td>
+    <td class="text-white"><%=d.topic %></td>
+    <td class="text-white"><%=d.file %></td>
     <td><a href = "<%="#{d.id}#{d.file}"%>" target="_blank" >Ver</a></td>
     <%end%>
   </tr>

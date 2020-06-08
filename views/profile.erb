@@ -1,14 +1,12 @@
-<div class="container signup-container">
-<div class="col-md-6 signup-form-2">
-<h3>Perfil</h3>
-	<% if session[:user_id] && @user.admin == 1 %>
-		<center><a  class="text text-light"><h4>Administrador</a></h4></center>
-	<%elsif session[:user_id] && @user.admin == 0 %>
-		<center><a class="text text-light" ><h4>Usuario</a></h4></center>
-	<%end%>
-	<center><a  class="text text-light"> Username: <%= @user.username%></a></center>
-	<center><a  class="text text-light"> Nombre: <%= @user.name%></a></center>
-	<center><a  class="text text-light"> Email: <%= @user.email%></a></center>
-	<center><a class="nav-link text-light" href="/change_pass">Cambiar Contraseña</a></center>
-</div>
-</div>
+<div class="container standard-container">
+    <div class="col-md-6 standard-form-2">
+        <center><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt class="d-block ui-w-100 rounded-circle"></center>
+        <center><h4 class="text-white"><%= @user.username%></h4></center>
+        <div class="text-white">
+        	<center>Nombre: <%= @user.name%></center>
+			<center>Email: <%= @user.email%></center>
+			<div class="profilebtn .btnSubmit">
+				<center><a type="submit" class="btnSubmit" href="/change_pass">Cambiar Contraseña</a></center>
+			</div>
+		</div>
+      </div>

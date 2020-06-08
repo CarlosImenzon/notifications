@@ -1,29 +1,32 @@
-<div class="container">
-	<h3>Nuevo Documento</h3>
-		<form  id="form" action="/save_document" method="POST" enctype="multipart/form-data">
-			<div class="form-group">
-			    <input type="text" name="title" class="form-control" placeholder="Titulo">
-  			</div>
-  			<div class="form-group">
-			    <input type="text" name="topic" class="form-control" placeholder="Tema">
-  			</div>
-  			<div class="form-group">
-		    <input type="file" name="fileInput" accept= ".pdf, .jpg, .jpeg, .png" class="form-control-file">
-		  	</div>
-            <br>
-			<div class="form-group">
-			</br>
-		    <label for="exampleFormControlSelect2">Seleccionar usuarios</label>
-		    <select multiple class="form-control" name="multi_select[]" id="exampleFormControlSelect2">
-					<% @users.each do |u| %>
-  					<option value='<%=u.id%>'>
-							<%=u.username%>
-						</option>
-   				<%end%>
-   			</select>
-			</div>
-			</br>
-			<button type="submit" class="btn btn-primary">Crear Documento</button>
-			<div id="msgs"></div>
-		</form>
+<div class="container standard-container">
+    <div class="col-md-6 standard-form-2">
+
+			<div class="container">
+				<center><h2 class="text-white">Nuevo Documento</h2></center>
+				<br>
+					<form  id="form" action="/save_document" method="POST" enctype="multipart/form-data">
+						<div class="form-group">
+						    <input type="text" name="title" class="form-control" placeholder="Titulo">
+			  			</div>
+			  			<div class="form-group">
+						    <input type="text" name="topic" class="form-control" placeholder="Tema">
+			  			</div>
+			  			<div class="form-group">
+					    <input type="file" name="fileInput" accept= ".pdf, .jpg, .jpeg, .png" class="form-control-file">
+					  	</div>
+					    <label class="text-white" for="exampleFormControlSelect2">Seleccionar usuarios</label>
+					    <select multiple class="form-control" name="multi_select[]" id="exampleFormControlSelect2">
+								<% @users.each do |u| %>
+			  					<option value='<%=u.id%>'>
+										<%=u.username%>
+									</option>
+			   				<%end%>
+			   			</select>
+						</div>
+						</br>
+						<center><button type="submit" class="btn btn-primary">Crear Documento</button></center>
+						<div id="msgs"></div>
+					</form>
+		    </div>
+	</div>
 </div>

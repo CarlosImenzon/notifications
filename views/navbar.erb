@@ -1,19 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+<style>
+    body { background-color: #CE927A; }
+    </style>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
     <a class="navbar-brand text-light" href="/"> <b> Sistema de notificacion </b> </a>
     <div class="navbar-nav ml-auto" >
     <ul class="navbar-nav mr-auto">
        <% if session[:user_id] && @user.admin == 1 %>
             <li class="nav-item">
-              <a class="nav-link text-light" href="/documents">Documentos</a>
+              <a class="nav-link text-light" href="/documents"><h6>Documentos</h6></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" href="/save_document">Nuevo documento</a>
+              <a class="nav-link text-light" href="/save_document"><h6>Nuevo documento</h6></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" href="/profile">Perfil</a>
+              <a class="nav-link text-light" href="/profile"><h6>Perfil</h6></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" href="/logout">Cerrar sesión</a>
+              <a class="nav-link text-light" href="/logout"><h6>Cerrar sesión</h6></a>
             </li>
           <%elsif session[:user_id] && @user.admin == 0 %>
             <li class="nav-item">
