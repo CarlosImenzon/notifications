@@ -7,7 +7,7 @@
     <ul class="navbar-nav mr-auto">
        <% if session[:user_id] && @user.admin == 1 %>
             <li class="nav-item">
-              <a class="nav-link text-light" href="/documents"><h6>Documentos</h6></a>
+            <a id="msgs" class="nav-link text-light" href="/documents"><h6>Documentos</h6></a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-light" href="/save_document"><h6>Nuevo documento</h6></a>
@@ -21,6 +21,7 @@
           <%elsif session[:user_id] && @user.admin == 0 %>
             <li class="nav-item">
               <a class="nav-link text-light" href="/documents">Documentos</a>
+              <div id="msgs"></div>
             </li>
             <li class="nav-item">
               <a class="nav-link text-light" href="/profile">Perfil</a>
