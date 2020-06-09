@@ -21,7 +21,7 @@ class App < Sinatra::Base
     set :sockets, []
   end
 
-   before do
+  before do
     @path = request.path_info
     if !session[:user_id] && @path != '/login' && @path != '/signup'
       redirect '/login'
@@ -30,8 +30,8 @@ class App < Sinatra::Base
     end
   end
 
-  get "/" do
-    erb :index
+  get '/' do
+     erb :index
   end
 
   get "/login" do
@@ -55,13 +55,10 @@ class App < Sinatra::Base
     end
   end
 
-  get "/save_document" do
-    if session[:user_id]
-      @users = User.order(:username)
-      erb :save_document
-    end
+  get "/save_document" do  
+    @users = User.order(:username)
+    erb :save_document
   end
-
 
   get "/documents" do
     if session[:user_id] && @user.admin == 1
@@ -130,6 +127,7 @@ class App < Sinatra::Base
       erb :save_document
     end
   end
+  
 
   post '/change_pass' do
     request.body.rewind
@@ -165,4 +163,25 @@ class App < Sinatra::Base
       end
     end
   end
+
+
+
+  def notification
+    if !request.websocket?
+      erb :index
+    else
+      request.websocket do |ws|
+        ws.onopen do
+          settings.sockets << ws
+        end
+        ws.onmessage do |msg|
+          EM.next_tick { settings.sockets.each{|s| s.send(msg) } }
+        end
+        ws.onclose do
+          settings.sockets.delete(ws)
+        end
+      end
+    end
+  end
+
 end
