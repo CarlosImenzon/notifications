@@ -5,21 +5,37 @@
   <table class="table table-striped">
   <thead>
       <tr>
-        <th class="text-white">Titulo</th>
-        <th class="text-white">Tema</th>
-        <th class="text-white">Archivo</th>
-        <th class="text-white">Action</th>
+        <th class="text-black">Titulo</th>
+        <th class="text-black">Tema</th>
+        <th class="text-black">Archivo</th>
+        <th class="text-black">Ver</th>
+        <th class="text-black">Borrar</th>
       </tr>
     </thead>
   <tbody> 
-    <% @documents.each do |d| %>
-  <tr>
-    <td class="text-white"><%=d.title %></td>
-    <td class="text-white"><%=d.topic %></td>
-    <td class="text-white"><%=d.file %></td>
-    <td><a href = "<%="#{d.id}#{d.file}"%>" target="_blank" >Ver</a></td>
-    <%end%>
-  </tr>
+  
+        <% @documents.each do |d| %>
+          <%if d.visibility %>
+            <form action="" method="POST">
+    
+            <tr>
+              <% if @user.admin == 1 %>
+                <td class="text-white"><%=d.title %></td>
+                <td class="text-white"><%=d.topic %></td>
+                <td class="text-white"><%=d.file %></td>
+                <td><a href = "<%="#{d.id}#{d.file}"%>" target="_blank" >Ir</a></td>
+                <td><button name="delete_doc" type="submit" value="<%=d.id%>" formaction="/delete_doc">Eliminar</button></td>
+              <%elsif @user.admin == 0 %>
+                <td class="text-white"><%=d.title %></td>
+                <td class="text-white"><%=d.topic %></td>
+                <td class="text-white"><%=d.file %></td>
+                <td><a href = "<%="#{d.id}#{d.file}"%>" target="_blank" >Ir</a></td>
+                <td>No se puede eliminar</td>
+              <%end%>
+              </tr>
+            </form>
+          <%end%>
+        <%end%>    
   </tbody>
 </table>
 </div>
