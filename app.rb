@@ -9,8 +9,7 @@ require 'sinatra-websocket'
 
 
 include FileUtils::Verbose
-class App < Sinatra::Base
-
+class App < Sinatra::Base 
 
   configure :development do
     enable :logging
@@ -182,6 +181,18 @@ class App < Sinatra::Base
         end
       end
     end
+  end
+
+  post '/delete_doc' do 
+    doc_id = params["delete_doc"] 
+    if !doc_id.nil?
+      suppress_doc(Document.find(id: doc_id))
+    end  
+   redirect back 
+  end
+
+  def suppress_doc(document)
+      document.update(visibility: false)   
   end
 
 end
