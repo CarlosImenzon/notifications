@@ -7,10 +7,9 @@ require 'net/http'
 require 'sinatra'
 require 'sinatra-websocket'
 
-
 include FileUtils::Verbose
-class App < Sinatra::Base 
 
+class App < Sinatra::Base
   configure :development do
     enable :logging
     enable :session
@@ -30,7 +29,11 @@ class App < Sinatra::Base
   end
 
   get '/' do
-     erb :index
+    if !request.websocket?
+      erb:index
+    else
+      notification
+    end
   end
 
   get "/login" do
@@ -54,18 +57,28 @@ class App < Sinatra::Base
     end
   end
 
-  get "/save_document" do  
-    @users = User.order(:username)
-    erb :save_document
+  get "/save_document" do
+    if !request.websocket?
+      if session[:user_id] && @user.admin == 1
+        @users = User.order(:username)
+        erb :save_document
+      end
+    else
+      notification
+    end
   end
 
   get "/documents" do
-    if session[:user_id] && @user.admin == 1
-      @documents = Document.all
-      erb :documents
+    if !request.websocket?
+      if session[:user_id] && @user.admin == 1
+        @documents = Document.all
+        erb :documents
+      else
+        @documents = @user.documents
+        erb :documents
+      end
     else
-      @documents = @user.documents
-      erb :documents
+      notification
     end
   end
 
@@ -78,7 +91,11 @@ class App < Sinatra::Base
   end
 
   get "/profile" do
-    erb :profile
+    if !request.websocket?
+      erb :profile
+    else
+      notification
+    end
   end
 
   post '/login' do
@@ -92,7 +109,6 @@ class App < Sinatra::Base
       end
   end
 
-
   post '/signup' do
     request.body.rewind
     hash = Rack::Utils.parse_nested_query(request.body.read)
@@ -102,8 +118,8 @@ class App < Sinatra::Base
       user.save
       erb :login
     else
-       @error ="Su username o email ya existe"
-       erb :signup
+      @error ="Su username o email ya existe"
+      erb :signup
     end
   end
 
@@ -126,7 +142,6 @@ class App < Sinatra::Base
       erb :save_document
     end
   end
-  
 
   post '/change_pass' do
     request.body.rewind
@@ -163,36 +178,33 @@ class App < Sinatra::Base
     end
   end
 
-
-
-  def notification
-    if !request.websocket?
-      erb :index
-    else
-      request.websocket do |ws|
-        ws.onopen do
-          settings.sockets << ws
-        end
-        ws.onmessage do |msg|
-          EM.next_tick { settings.sockets.each{|s| s.send(msg) } }
-        end
-        ws.onclose do
-          settings.sockets.delete(ws)
-        end
-      end
-    end
-  end
-
-  post '/delete_doc' do 
-    doc_id = params["delete_doc"] 
+  post '/delete_doc' do
+    doc_id = params["delete_doc"]
     if !doc_id.nil?
       suppress_doc(Document.find(id: doc_id))
-    end  
-   redirect back 
+    end
+    redirect back
   end
 
   def suppress_doc(document)
-      document.update(visibility: false)   
+      document.update(visibility: false)
   end
 
+  def notification
+    request.websocket do |ws|
+      ws.onopen do
+        settings.sockets << ws
+      end
+      ws.onmessage do |msg|
+        EM.next_tick {
+          settings.sockets.each{|s|
+            s.send(msg)
+          }
+        }
+      end
+      ws.onclose do
+        settings.sockets.delete(ws)
+      end
+    end
+  end
 end

@@ -1,4 +1,4 @@
-<div class="container">
+<div id="reload" class="container">
   </br>
   <center><h2 class="text-white">Mis Documentos</h2></center>
   </br>
@@ -13,11 +13,9 @@
       </tr>
     </thead>
   <tbody> 
-  
         <% @documents.each do |d| %>
           <%if d.visibility %>
             <form action="" method="POST">
-    
             <tr>
               <% if @user.admin == 1 %>
                 <td class="text-white"><%=d.title %></td>
@@ -39,6 +37,5 @@
   </tbody>
 </table>
 </div>
-
 
   
