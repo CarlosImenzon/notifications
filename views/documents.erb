@@ -9,27 +9,23 @@
         <th class="text-black">Tema</th>
         <th class="text-black">Archivo</th>
         <th class="text-black">Ver</th>
-        <th class="text-black">Borrar</th>
+        <% if @user.admin == 1 %>
+          <th class="text-black">Borrar</th>
+        <% end %>
       </tr>
     </thead>
   <tbody> 
         <% @documents.each do |d| %>
           <%if d.visibility %>
             <form action="" method="POST">
-            <tr>
-              <% if @user.admin == 1 %>
+              <tr>
                 <td class="text-white"><%=d.title %></td>
                 <td class="text-white"><%=d.topic %></td>
                 <td class="text-white"><%=d.file %></td>
                 <td><a href = "<%="#{d.id}#{d.file}"%>" target="_blank" >Ir</a></td>
-                <td><button name="delete_doc" type="submit" value="<%=d.id%>" formaction="/delete_doc">Eliminar</button></td>
-              <%elsif @user.admin == 0 %>
-                <td class="text-white"><%=d.title %></td>
-                <td class="text-white"><%=d.topic %></td>
-                <td class="text-white"><%=d.file %></td>
-                <td><a href = "<%="#{d.id}#{d.file}"%>" target="_blank" >Ir</a></td>
-                <td>No se puede eliminar</td>
-              <%end%>
+                <% if @user.admin == 1 %>
+                  <td><button name="delete_doc" type="submit" value="<%=d.id%>" formaction="/delete_doc">Eliminar</button></td>
+                <% end %>
               </tr>
             </form>
           <%end%>
@@ -39,9 +35,9 @@
 </div>
 
 <script>
-$(document).ready(function() {
+  $(document).ready(function() {
     $('#example').DataTable();
-} );
+  } );
 </script>
 
   
