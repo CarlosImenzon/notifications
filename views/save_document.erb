@@ -24,6 +24,9 @@
 						</div>
 						</br>
 						<center><button type="submit" class="btn btn-primary">Crear Documento</button></center>
+						<% if @error %>
+    						<p class="error"><%= @error %></p>
+  						<% end %>
 					</form>
 		    </div>
 	</div>

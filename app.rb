@@ -126,20 +126,26 @@ class App < Sinatra::Base
 
   post '/save_document' do
     File.chmod(0777, "public/")
-    @filename = params[:fileInput][:filename]
-    file = params[:fileInput][:tempfile]
-    document = Document.create(title: params["title"], topic: params["topic"], file: @filename)
-    if document.save
+    if params[:fileInput] != nil
+      @filename = params[:fileInput][:filename]
+      file = params[:fileInput][:tempfile]
+    else
+      @filename = nil
+    end
+    document = Document.new(title: params["title"], topic: params["topic"], file: @filename)
+    if document.valid? && @filename != nil
+      document.save
       tagusers = params["multi_select"]
       tagusers.each do |u|
-      Relation.new(document_id: document.id, user_id: u.to_i).save
-    end
+        Relation.new(document_id: document.id, user_id: u.to_i).save
+      end
       cp(file.path, "public/#{document.id}#{document.file}")
       File.chmod(0777, "public/#{document.id}#{document.file}")
       "Documento cargado"
       redirect '/'
     else
-      [500, {}, "Internal Server Error"]
+      @error ="Error al cargar documento, verifique los campos"
+      @users = User.order(:username)
       erb :save_document
     end
   end
