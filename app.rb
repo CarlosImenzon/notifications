@@ -7,6 +7,7 @@ require 'net/http'
 require 'sinatra'
 require 'sinatra-websocket'
 
+
 include FileUtils::Verbose
 
 class App < Sinatra::Base
@@ -115,7 +116,7 @@ class App < Sinatra::Base
     params = JSON.parse hash.to_json
     user = User.new(name: params["name"], email: params["email"], username: params["username"], password: params["password"], admin: 0)
     if  user.valid?
-      user.save
+      user.save  
       erb :login
     else
       @error ="Su username o email ya existe"
@@ -207,4 +208,5 @@ class App < Sinatra::Base
       end
     end
   end
+  
 end
