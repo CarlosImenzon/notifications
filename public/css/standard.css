@@ -1,6 +1,5 @@
 .text-white {
     color: #fff !important;
-    font-weight : bold;
 }
 
 .standard-container{
@@ -16,7 +15,7 @@
     box-shadow: 0 5px 5px 0 #343a40, 0 9px 26px 0 rgba(0, 0, 0, 0.19);
 }
 
-.standard-form-2 h3{
+.standard-form-2 {
     text-align: center;
     color: #fff;
 }
