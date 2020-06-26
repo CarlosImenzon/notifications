@@ -1,21 +1,12 @@
-# Description
+## Notificaciones
 
-This is a sample readme file 
+Este proyecto tiene como objetivo ser un sistema de notificacion para los usuarios de la facultad de Ciencias Exactas de UNRC. Envía una notificación cada vez que se menciona a una persona en una resolución o acto. Está escrita en Ruby, HTML y JavaScript.
 
-# Usage
+## Autores
 
-```
-  docker-compose up --build
-```
+Fernandez Jorge Federico - fedefernandez93
+Imenzon Carlos Alexander - CarlosImenzon
+Sosa Juan Segundo - Juanse1998
 
-
-# Authors
-
-## Core
-
-  * SE UNRC
-  * SE UNRC 2
-
-# Licence
-(link)[licence]
-
+## Licencia
+Este proyecto está bajo licencia (MIT): consulte el archivo LICENSE.md para obtener más detalles.

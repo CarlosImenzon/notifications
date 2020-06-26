@@ -87,21 +87,13 @@ En esta sección especificaremos aquellos requisitos que intervienen en el proce
   proporcionar acceso a los datos personales del SIAL.
 * Inicio de Sesión: Un usuario registrado deberá ser capaz de ingresar a la aplicación.
 * Cerrar Sesion: El usuario debe poder cerrar seccion de la aplicacion. 
-* Recuperar Contraseña: El usuario registrado deberá ser capaz de recuperar la contraseña
-  utilizando el correo registrado.
-* Estado del Documento: El ususario debera poder verificar el estado del documento solicitado.
+* Recuperar Contraseña: El usuario registrado deberá ser capaz de cambiar la contraseña.
+* Cambiar email: El usuario registrado deberá ser capaz de cambiar el email.
 * Descargar Documentos: El usuario debera ser capaz de descargar documentos.
 * Subir Documento: El usuario administrador debe poder realizar la carga de un documento.
 * Visualizacion del Documento: El usuario debera poder visualizar los documentos propios y publicos. 
-
+ 
   ![Diagrama](Diagrama.png)
-
-
-### 3.3 Requerimientos de Desempeño
-
-### 3.4 Restricciones de Diseño
-
-### 3.5 Atributos
 
 
 
