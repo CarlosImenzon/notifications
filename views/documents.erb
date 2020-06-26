@@ -24,7 +24,7 @@
                 <td class="text-white"><%=d.file %></td>
                 <td><a href = "<%="#{d.id}#{d.file}"%>" target="_blank" >Ir</a></td>
                 <% if @user.admin == 1 %>
-                  <td><button name="delete_doc" type="submit" value="<%=d.id%>" formaction="/delete_doc">Eliminar</button></td>
+                  <td><button onclick="prueba(<%=d.id%>)" >Eliminar</button></td>
                 <% end %>
               </tr>
             </form>
@@ -36,8 +36,34 @@
 
 <script>
   $(document).ready(function() {
-    $('#example').DataTable();
-  } );
+  $('#example').dataTable( {
+        //"serverSide": true
+    });
+  });
+
+  function prueba(id){
+  var r = confirm("Presione para confirmar!");
+  if (r == true) {
+      $.ajax({
+        method : 'POST',
+        url: "http://localhost:9292/delete_doc",
+        dataType: 'json',
+        data: { delete_doc: id },
+        success: function(data) {
+          console.log("Llego tu tiburon");
+          alert("Documento borrado exitosamente");
+        }, 
+        error: function(e) {
+          console.log("Entre");
+          console.log(e);
+        }
+      })
+      console.log("fin");
+    }
+  }
 </script>
 
-  
+
+
+
+

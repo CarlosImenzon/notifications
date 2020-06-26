@@ -24,7 +24,7 @@ window.onload = function(){
       var sender = function(f){
         f.onsubmit = function(){
           console.log(input.value)
-          ws.send('*');
+          ws.send('1');
           return true;
         }
       }(document.getElementById('form'));

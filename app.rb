@@ -105,9 +105,14 @@ class App < Sinatra::Base
       session[:user_id] = @user.id
       redirect '/'
       else
-        @error ="Su nombre o contraseña es incorrecto"
+       if params[""]=""   
+        @error ="Verifique, campo/s vacio/s"
+        erb :login
+      else  
+        @error ="Su username o email ya existe"
         erb :login
       end
+    end
   end
 
   post '/signup' do
@@ -118,10 +123,14 @@ class App < Sinatra::Base
     if  user.valid?
       user.save  
       erb :login
-    else
-      @error ="Su username o email ya existe"
-      erb :signup
-    end
+      elsif params[""]=""   
+        @error ="Verifique, campo/s vacio/s"
+        erb :signup
+      else  
+        @error ="Su username o email ya existe"
+        erb :signup
+      end
+    
   end
 
   post '/save_document' do
@@ -190,7 +199,7 @@ class App < Sinatra::Base
     if !doc_id.nil?
       suppress_doc(Document.find(id: doc_id))
     end
-    redirect back
+    halt :ok
   end
 
   def suppress_doc(document)
