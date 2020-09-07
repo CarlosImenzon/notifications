@@ -37,20 +37,20 @@ class App < Sinatra::Base
     end
   end
 
-  get "/login" do
-    if session[:user_id]
+  get "/login" do         #get del login si inicia sesion entra a la aplicación,
+    if session[:user_id]  #de lo contrario vuelve a solicitar los datos.
       redirect '/'
     else
       erb :login
     end
   end
 
-  get "/logout" do
+  get "/logout" do    #get del logout para terminar la sesión.
     session.clear
     erb :logout
   end
 
-  get "/signup" do
+  get "/signup" do    #get para registrar un nuevo usuario.
     if session[:user_id]
       session.clear
     else
@@ -58,7 +58,7 @@ class App < Sinatra::Base
     end
   end
 
-  get "/save_document" do
+  get "/save_document" do   #get para cargar un nuevo documento si es usuario administrador.
     if !request.websocket?
       if session[:user_id] && @user.admin == 1
         @users = User.order(:username)
@@ -69,7 +69,7 @@ class App < Sinatra::Base
     end
   end
 
-  get "/documents" do
+  get "/documents" do       #get para mostrar todos los documentos a un usuario administrador.
     if !request.websocket?
       if session[:user_id] && @user.admin == 1
         @documents = Document.all
@@ -83,15 +83,15 @@ class App < Sinatra::Base
     end
   end
 
-  get "/change_pass" do
+  get "/change_pass" do   #get para cambiar la contraseña de un usuario.
     erb :change_pass
   end
 
-  get "/change_mail" do
+  get "/change_mail" do   #get para cambiar el mail de un usuario.
     erb :change_mail
   end
 
-  get "/profile" do
+  get "/profile" do       #get para ver el perfil de un usuario.
     if !request.websocket?
       erb :profile
     else
@@ -99,14 +99,14 @@ class App < Sinatra::Base
     end
   end
 
-  post '/login' do
+  post '/login' do                                    #post para loguear un usuario.
     @user = User.find(username: params[:username])
-    if @user && @user.password == params['password']
+    if @user && @user.password == params['password']  #Si los campos son correctos ingresa.
       session[:user_id] = @user.id
       redirect '/'
       else
        if params[""]=""   
-        @error ="Verifique, campo/s vacio/s"
+        @error ="Verifique, campo/s vacio/s"          #Si algun campo esta vacio, muestra error.  
         erb :login
       else  
         @error ="Su username o email ya existe"
@@ -115,15 +115,15 @@ class App < Sinatra::Base
     end
   end
 
-  post '/signup' do
+  post '/signup' do                             #post para registrar un usuario.
     request.body.rewind
     hash = Rack::Utils.parse_nested_query(request.body.read)
     params = JSON.parse hash.to_json
     user = User.new(name: params["name"], email: params["email"], username: params["username"], password: params["password"], admin: 0)
-    if  user.valid?
+    if  user.valid?                                   #Si los parametros son validos se registra el usuario.
       user.save  
       erb :login
-      elsif params[""]=""   
+      elsif params[""]=""                             #Si hay datos invalidos, muestra error.
         @error ="Verifique, campo/s vacio/s"
         erb :signup
       else  
@@ -133,7 +133,7 @@ class App < Sinatra::Base
     
   end
 
-  post '/save_document' do
+  post '/save_document' do                #post para cargar un nuevo documento
     File.chmod(0777, "public/")
     if params[:fileInput] != nil
       @filename = params[:fileInput][:filename]
@@ -142,10 +142,10 @@ class App < Sinatra::Base
       @filename = nil
     end
     document = Document.new(title: params["title"], topic: params["topic"], file: @filename)
-    if document.valid? && @filename != nil
+    if document.valid? && @filename != nil   #Si el documento es valido se guarda
       document.save
       tagusers = params["multi_select"]
-      tagusers.each do |u|
+      tagusers.each do |u|                  #Etiqueta de usuarios
         Relation.new(document_id: document.id, user_id: u.to_i).save
       end
       cp(file.path, "public/#{document.id}#{document.file}")
@@ -159,7 +159,7 @@ class App < Sinatra::Base
     end
   end
 
-  post '/change_pass' do
+  post '/change_pass' do                    #Post para cambiar la contraseña de usuario.
     request.body.rewind
     hash = Rack::Utils.parse_nested_query(request.body.read)
     params = JSON.parse hash.to_json
