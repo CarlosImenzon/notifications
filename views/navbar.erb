@@ -1,11 +1,11 @@
 <style>
     body { background-color: #7C8D94; }
     </style>
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark"> <!--Se define el estilo del menu-->
     <a class="navbar-brand text-light" href="/"> <b> Sistema de notificacion </b> </a>
     <div class="navbar-nav ml-auto">
     <ul class="navbar-nav mr-auto">
-       <% if session[:user_id] && @user.admin == 1 %>
+       <% if session[:user_id] && @user.admin == 1 %> <!--Accesos a funciones disponibles para los administradores-->
             <li class="nav-item dropdown">
               <a class="nav-link text-light notification2" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/profile"><h6>Perfil</h6></a>
               <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
@@ -23,7 +23,7 @@
             <li class="nav-item">
               <a class="nav-link text-light notification2" href="/save_document"><h6>Nuevo documento</h6></a>
             </li>
-          <%elsif session[:user_id] && @user.admin == 0 %>
+          <%elsif session[:user_id] && @user.admin == 0 %>  <!--Accesos a funciones disponibles para los usuarios-->
             <li class="nav-item dropdown">
               <a class="nav-link text-light notification2" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/profile"><h6>Perfil</h6></a>
               <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">

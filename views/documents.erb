@@ -2,8 +2,8 @@
   </br>
   <center><h2 class="text-white">Mis Documentos</h2></center>
   </br>
-  <table id="example" class="table table-striped">
-  <thead>
+  <table id="example" class="table table-striped"> <!--estilo de la tabla-->
+  <thead> <!--se define las columnas-->
       <tr>
         <th class="text-black">Titulo</th>
         <th class="text-black">Tema</th>
@@ -15,16 +15,16 @@
       </tr>
     </thead>
   <tbody> 
-        <% @documents.each do |d| %>
-          <%if d.visibility %>
+        <% @documents.each do |d| %>  <!--Se muestran todos los documentos-->
+          <%if d.visibility %>  <!--Si la visibilidad del documento es "true" se muestra-->
             <form action="" method="POST">
               <tr>
                 <td class="text-white"><%=d.title %></td>
                 <td class="text-white"><%=d.topic %></td>
                 <td class="text-white"><%=d.file %></td>
                 <td><a href = "<%="#{d.id}#{d.file}"%>" target="_blank" >Ir</a></td>
-                <% if @user.admin == 1 %>
-                  <td><button onclick="prueba(<%=d.id%>)" >Eliminar</button></td>
+                <% if @user.admin == 1 %> <!--Solo los administradores pueden borrar documentos-->
+                  <td><button onclick="prueba(<%=d.id%>)" >Eliminar</button></td> <!--Boton de borrado-->
                 <% end %>
               </tr>
             </form>

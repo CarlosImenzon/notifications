@@ -163,12 +163,12 @@ class App < Sinatra::Base
     request.body.rewind
     hash = Rack::Utils.parse_nested_query(request.body.read)
     params = JSON.parse hash.to_json
-    if params["password1"] != params["password2"]
+    if params["password1"] != params["password2"]	#Verifica que la contraseña y la confirmacion sean iguales
       @error ="Las contraseñas no coinciden"
       erb :change_pass
     else
       if @user.update(password: params["password1"])
-        session.clear
+        session.clear	#se mantiene iniciada la sesion
         erb :login
       else
         @error ="Error al cambiar contraseña o ingresaste la misma contraseña"
@@ -177,11 +177,11 @@ class App < Sinatra::Base
     end
   end
 
-  post '/change_mail' do
+  post '/change_mail' do  				#Post para cambiar el mail del usuario.
     request.body.rewind
     hash = Rack::Utils.parse_nested_query(request.body.read)
     params = JSON.parse hash.to_json
-    if params["email1"] != params["email2"]
+    if params["email1"] != params["email2"]	#Verifica que el correo nuevo y la confirmacion sean iguales
       @error ="Los email no coinciden"
       erb :change_mail
     else
@@ -194,7 +194,7 @@ class App < Sinatra::Base
     end
   end
 
-  post '/delete_doc' do
+  post '/delete_doc' do  			#Post de borrado logico de un documento  
     doc_id = params["delete_doc"]
     if !doc_id.nil?
       suppress_doc(Document.find(id: doc_id))
@@ -202,11 +202,11 @@ class App < Sinatra::Base
     halt :ok
   end
 
-  def suppress_doc(document)
-      document.update(visibility: false)
+  def suppress_doc(document)		#Funcion para el borrado logico de un documento
+      document.update(visibility: false)	#Cambio de visibilidad del documento
   end
 
-  def notification
+  def notification					#Funcion para la notificacion en tiempo real
     request.websocket do |ws|
       ws.onopen do
         settings.sockets << ws

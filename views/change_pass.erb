@@ -1,19 +1,19 @@
-<div class="container standard-container">
+<div class="container standard-container">  <!--Estilo defininido-->
     <div class="col-md-6 standard-form-2">
 
         <center><h4 class="text-white">Cambiar Contraseña</h4></center>
-        <form method="POST" action="/change_pass">
-            <div class="form-group">
+        <form method="POST" action="/change_pass">  <!--Se define la forma de enviar los datos-->
+            <div class="form-group">    <!--se ingresa la contraseña nueva-->
                 <center><input type="password" class="form-control" name="password1" placeholder="Nueva Contraseña" /></center>
             </div>
-            <div class="form-group">
+            <div class="form-group">    <!--se ingresa la confirmacion contraseña nueva-->
                 <center><input type="password" class="form-control"  name="password2" placeholder="Confirmar Contraseña" /></center>
             </div>
-            <div class="profilebtn .btnSubmit">
+            <div class="profilebtn .btnSubmit">     <!--Confirmacion-->
                 <center><input type="submit" class="btnSubmit" value="Confirmar" /></center>
             </div>
             <div class="form-group"></div>
-            <% if @error %>
+            <% if @error %> <!--Si existe un error, se notifica al usuario-->
                 <p class="error"><%= @error %></p>
             <% end %>
         </form>

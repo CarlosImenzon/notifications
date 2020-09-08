@@ -1,9 +1,10 @@
 <div class="container standard-container">
-    <div class="col-md-6 standard-form-2">
+    <div class="col-md-6 standard-form-2"> <!--Se define el estilo del perfil-->
         <center><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt class="d-block ui-w-100 rounded-circle"></center>
         <h3><%= @user.username%></h3>
         <br>
-        <center><h4 class="text-white">Nombre: <%= @user.name%></h4></center>
+        <!--Informacion del usuario-->
+        <center><h4 class="text-white">Nombre: <%= @user.name%></h4></center>	
 		<center><h4 class="text-white">Email: <%= @user.email%></h4></center>
 	</div>
 </div>

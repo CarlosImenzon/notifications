@@ -1,7 +1,8 @@
 <div class="container standard-container">
     <div class="col-md-6 standard-form-2">
         <h3>Registrarse</h3>
-        <form method="POST" action="/signup">
+        <form method="POST" action="/signup"> <!--Se define la forma de enviar los datos-->
+            <!--Formulario de registro-->
             <div class="form-group">
                 <input type="text" class="form-control" name="name" placeholder="Nombre"/>
             </div>
@@ -14,10 +15,11 @@
             <div class="form-group">
                 <input type="password" class="form-control" placeholder="Contraseña" name="password" />
             </div>
-            <% if @error %>
+            <% if @error %> <!--Se notifica en caso de algun error-->
                 <p class="error"><%= @error %></p>
             <% end %>
             <div class="form-group">
+                <!--Confirmacion de registro-->
                 <center><input type="submit" class="btnSubmit" value="Registrar" /></center>
             </div>
             <div class="form-group">
