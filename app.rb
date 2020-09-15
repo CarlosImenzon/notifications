@@ -168,7 +168,7 @@ class App < Sinatra::Base
       erb :change_pass
     else
       if @user.update(password: params["password1"])
-        session.clear	#se mantiene iniciada la sesion
+        session.clear	#se cierra la sesion
         erb :login
       else
         @error ="Error al cambiar contraseña o ingresaste la misma contraseña"
