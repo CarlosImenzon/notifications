@@ -7,6 +7,7 @@ gem 'sequel'
 gem 'pg'
 gem 'sinatra-websocket'
 gem "activemodel", require: "active_model"
+gem 'rubocop', '~> 0.91.0', require: false
 
 group :development do
   gem 'dotenv', '2.7.5'
