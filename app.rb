@@ -227,5 +227,15 @@ class App < Sinatra::Base
       }
     end
   end
-  
+
+  #Pasaje de parametros a signup
+  def params_user
+    {
+      name: params['name'],
+      email: params['email'],
+      username: params['username'],
+      password: params['password'],
+      admin: 0
+    }
+  end
 end
