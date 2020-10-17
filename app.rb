@@ -57,7 +57,7 @@ class App < Sinatra::Base
     end
   end
 
-  get '/save_document' do   # cargar un nuevo documento, solo administrador.
+  get '/save_document' do # cargar un nuevo documento, solo administrador.
     if !request.websocket?
       if session[:user_id] && @user.admin == 1
         @users = User.order(:username)
@@ -68,16 +68,15 @@ class App < Sinatra::Base
     end
   end
 
-  get '/documents' do       # mostrar los documentos, solo administrador.
-    if !request.websocket?
-      if session[:user_id] && @user.admin == 1
-        @documents = Document.all
-      else
-        @documents = @user.documents
-      end
+  get 'documents' do # mostrar los documentos, solo administrador.
+    if request.websocket?
+      notification
+    elsif session[:user_id] && @user.admin == 1
+      @documents = Document.all
       erb :documents
     else
-      notification
+      @documents = @user.documents
+      erb :documents
     end
   end
 
@@ -103,13 +102,12 @@ class App < Sinatra::Base
       # Si los campos son correctos ingresa.
       session[:user_id] = @user.id
       redirect '/'
+    elsif params[''] == ''
+      # Si algun campo esta vacio, muestra error.
+      @error = 'Verifique, campo/s vacio/s'
+      erb :login
     else
-      if params[''] == ''
-        # Si algun campo esta vacio, muestra error.
-        @error = 'Verifique, campo/s vacio/s'
-      else
-        @error = 'Su username o email ya existe'
-      end
+      @error = 'Su username o email ya existe'
       erb :login
     end
   end
@@ -118,7 +116,13 @@ class App < Sinatra::Base
     request.body.rewind
     hash = Rack::Utils.parse_nested_query(request.body.read)
     params = JSON.parse hash.to_json
-    user = User.new(name: params['name'], email: params['email'], username: params['username'], password: params['password'], admin: 0)
+    user = User.new(
+      name: params['name'],
+      email: params['email'],
+      username: params['username'],
+      password: params['password'],
+      admin: 0
+    )
     if user.valid? # Si los parametros son validos se registra el usuario.
       user.save
       erb :login
