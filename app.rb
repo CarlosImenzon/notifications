@@ -68,15 +68,16 @@ class App < Sinatra::Base
     end
   end
 
-  get 'documents' do # mostrar los documentos, solo administrador.
-    if request.websocket?
-      notification
-    elsif session[:user_id] && @user.admin == 1
-      @documents = Document.all
+  get '/documents' do # Get para mostrar los documentos
+    if !request.websocket?
+      if session[:user_id] && @user.admin == 1
+        @documents = Document.all
+      else
+        @documents = @user.documents
+      end
       erb :documents
     else
-      @documents = @user.documents
-      erb :documents
+      notification
     end
   end
 
