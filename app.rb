@@ -7,6 +7,7 @@ require 'net/http'
 require 'sinatra'
 require 'sinatra-websocket'
 
+# clase principal
 class App < Sinatra::Base
   configure :development do
     enable :logging
