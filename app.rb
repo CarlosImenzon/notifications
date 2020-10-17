@@ -211,16 +211,20 @@ class App < Sinatra::Base
       ws.onopen do
         settings.sockets << ws
       end
-      ws.onmessage do |msg|
-        EM.next_tick {
-          settings.sockets.each{|s|
-            s.send(msg)
-          }
-        }
-      end
+      notifications
       ws.onclose do
         settings.sockets.delete(ws)
       end
+    end
+  end
+  
+  def notifications
+    ws.onmessage do |msg|
+      EM.next_tick {
+        settings.sockets.each{|s|
+          s.send(msg)
+        }
+      }
     end
   end
   
