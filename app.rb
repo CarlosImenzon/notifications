@@ -99,19 +99,19 @@ class App < Sinatra::Base
     end
   end
 
-  post '/login' do                                    #post para loguear un usuario.
+  post '/login' do # post para loguear un usuario.
     @user = User.find(username: params[:username])
-    if @user && @user.password == params['password']  #Si los campos son correctos ingresa.
+    if @user && @user.password == params['password']
+      # Si los campos son correctos ingresa.
       session[:user_id] = @user.id
       redirect '/'
-      else
-       if params[""]=""   
-        @error ="Verifique, campo/s vacio/s"          #Si algun campo esta vacio, muestra error.  
-        erb :login
-      else  
-        @error ="Su username o email ya existe"
-        erb :login
-      end
+    elsif params[''] == ''
+      # Si algun campo esta vacio, muestra error.
+      @error = 'Verifique, campo/s vacio/s'
+      erb :login
+    else
+      @error = 'Su username o email ya existe'
+      erb :login
     end
   end
 
@@ -236,6 +236,15 @@ class App < Sinatra::Base
       username: params['username'],
       password: params['password'],
       admin: 0
+    }
+  end
+
+  #Pasaje de parametros a save_document
+  def params_doc
+    {
+      title: params['title'],
+      topic: params['topic'],
+      file: @filename
     }
   end
 end
