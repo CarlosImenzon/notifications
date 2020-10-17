@@ -211,26 +211,21 @@ class App < Sinatra::Base
       ws.onopen do
         settings.sockets << ws
       end
-      ws.onmessage do |msg|
-        EM.next_tick {
-          settings.sockets.each{|s|
-            s.send(msg)
-          }
-        }
-      end
+      notifications
       ws.onclose do
         settings.sockets.delete(ws)
       end
     end
   end
   
-  #Pasaje de parametros a save_document
-  def params_doc
-    {
-      title: params['title'],
-      topic: params['topic'],
-      file: @filename
-    }
+  def notifications
+    ws.onmessage do |msg|
+      EM.next_tick {
+        settings.sockets.each{|s|
+          s.send(msg)
+        }
+      }
+    end
   end
 
   #Pasaje de parametros a signup
@@ -243,5 +238,4 @@ class App < Sinatra::Base
       admin: 0
     }
   end
-
 end
