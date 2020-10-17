@@ -141,7 +141,7 @@ class App < Sinatra::Base
     else
       @filename = nil
     end
-    document = Document.new(title: params["title"], topic: params["topic"], file: @filename)
+    document = Document.new(title: params[params_doc)
     if document.valid? && @filename != nil   #Si el documento es valido se guarda
       document.save
       tagusers = params["multi_select"]
@@ -224,4 +224,13 @@ class App < Sinatra::Base
     end
   end
   
+  #Pasaje de parametros a save_document
+  def params_doc
+    {
+      title: params['title'],
+      topic: params['topic'],
+      file: @filename
+    }
+  end
+
 end
