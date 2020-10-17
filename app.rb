@@ -28,6 +28,7 @@ class App < Sinatra::Base
     end
   end
 
+  # get del index principal.
   get '/' do
     if !request.websocket?
       erb :index
@@ -36,6 +37,7 @@ class App < Sinatra::Base
     end
   end
 
+  # get del login para iniciar sesion.
   get '/login' do         # si se inicia sesion entra a la aplicacion,
     if session[:user_id]  # de lo contrario vuelve a solicitar los datos.
       redirect '/'
@@ -44,12 +46,14 @@ class App < Sinatra::Base
     end
   end
 
-  get '/logout' do    # get del logout para terminar la sesion.
+  # get del logout para terminar la sesion.
+  get '/logout' do
     session.clear
     erb :logout
   end
 
-  get '/signup' do    # get para registrar un nuevo usuario.
+  # get para registrar un nuevo usuario.
+  get '/signup' do
     if session[:user_id]
       session.clear
     else
@@ -57,7 +61,8 @@ class App < Sinatra::Base
     end
   end
 
-  get '/save_document' do # cargar un nuevo documento, solo administrador.
+  # Cargar un nuevo documento, solo administrador.
+  get '/save_document' do
     if !request.websocket?
       if session[:user_id] && @user.admin == 1
         @users = User.order(:username)
@@ -68,28 +73,31 @@ class App < Sinatra::Base
     end
   end
 
-  get '/documents' do # Get para mostrar los documentos
-    if !request.websocket?
-      if session[:user_id] && @user.admin == 1
-        @documents = Document.all
-      else
-        @documents = @user.documents
-      end
+  # Get para mostrar los documentos
+  get '/documents' do
+    if request.websocket?
+      notification
+    elsif session[:user_id] && @user.admin == 1
+      @documents = Document.all
       erb :documents
     else
-      notification
+      @documents = @user.documents
+      erb :documents
     end
   end
 
-  get '/change_pass' do   # get para cambiar la contrasena de un usuario.
+  # get para cambiar la contrasena de un usuario.
+  get '/change_pass' do
     erb :change_pass
   end
 
-  get '/change_mail' do   # get para cambiar el mail de un usuario.
+  # get para cambiar el mail de un usuario.
+  get '/change_mail' do
     erb :change_mail
   end
 
-  get '/profile' do       # get para ver el perfil de un usuario.
+  # get para ver el perfil de un usuario.
+  get '/profile' do
     if !request.websocket?
       erb :profile
     else
@@ -97,7 +105,8 @@ class App < Sinatra::Base
     end
   end
 
-  post '/login' do # post para loguear un usuario.
+  # post para loguear un usuario.
+  post '/login' do
     @user = User.find(username: params[:username])
     if @user && @user.password == params['password']
       # Si los campos son correctos ingresa.
@@ -113,7 +122,8 @@ class App < Sinatra::Base
     end
   end
 
-  post '/signup' do # post para registrar un usuario.
+  # post para registrar un usuario.
+  post '/signup' do
     request.body.rewind
     hash = Rack::Utils.parse_nested_query(request.body.read)
     params = JSON.parse hash.to_json
@@ -130,7 +140,8 @@ class App < Sinatra::Base
     end
   end
 
-  post '/save_document' do # post para cargar un nuevo documento
+  # post para cargar un nuevo documento
+  post '/save_document' do
     File.chmod(0o777, 'public/')
     if !params[:fileInput].nil?
       @filename = params[:fileInput][:filename]
@@ -155,7 +166,8 @@ class App < Sinatra::Base
     end
   end
 
-  post '/change_pass' do # Post para cambiar la contrasena de usuario.
+  # Post para cambiar la contrasena de usuario.
+  post '/change_pass' do
     request.body.rewind
     hash = Rack::Utils.parse_nested_query(request.body.read)
     params = JSON.parse hash.to_json
@@ -172,7 +184,8 @@ class App < Sinatra::Base
     end
   end
 
-  post '/change_mail' do	# Post para cambiar el mail del usuario.
+  # Post para cambiar el mail del usuario.
+  post '/change_mail' do
     request.body.rewind
     hash = Rack::Utils.parse_nested_query(request.body.read)
     params = JSON.parse hash.to_json
@@ -188,7 +201,8 @@ class App < Sinatra::Base
     end
   end
 
-  post '/delete_doc' do	# Post de borrado logico de un documento
+  # Post de borrado logico de un documento
+  post '/delete_doc' do
     doc_id = params['delete_doc']
     suppress_doc(Document.find(id: doc_id)) unless doc_id.nil?
     halt :ok
