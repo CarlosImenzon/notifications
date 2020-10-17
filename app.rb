@@ -117,8 +117,8 @@ class App < Sinatra::Base
     hash = Rack::Utils.parse_nested_query(request.body.read)
     params = JSON.parse hash.to_json
     user = User.new(params_user)
-    if  user.valid?                                   #Si los parametros son validos se registra el usuario.
-      user.save  
+    if user.valid? # Si los parametros son validos se registra el usuario.
+      user.save
       erb :login
     elsif params[''] == '' # Si hay datos invalidos, muestra error.
       @error = 'Verifique, campo/s vacio/s'
@@ -138,7 +138,7 @@ class App < Sinatra::Base
       @filename = nil
     end
     document = Document.new(params_doc)
-    if document.valid? && @filename != nil   #Si el documento es valido se guarda
+    if document.valid? && !@filename.nil? # Si el documento es valido se guarda
       document.save
       tagusers = params['multi_select']
       tagusers.each do |u| # Etiqueta de usuarios
@@ -210,18 +210,19 @@ class App < Sinatra::Base
       end
     end
   end
-  
+
+  # Refactorizacion de notificacion
   def notifications
     ws.onmessage do |msg|
-      EM.next_tick {
-        settings.sockets.each{|s|
+      EM.next_tick do
+        settings.sockets.each do |s|
           s.send(msg)
-        }
-      }
+        end
+      end
     end
   end
 
-  #Pasaje de parametros a signup
+  # Pasaje de parametros a signup
   def params_user
     {
       name: params['name'],
@@ -232,7 +233,7 @@ class App < Sinatra::Base
     }
   end
 
-  #Pasaje de parametros a save_document
+  # Pasaje de parametros a save_document
   def params_doc
     {
       title: params['title'],
