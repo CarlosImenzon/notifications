@@ -116,15 +116,9 @@ class App < Sinatra::Base
     request.body.rewind
     hash = Rack::Utils.parse_nested_query(request.body.read)
     params = JSON.parse hash.to_json
-    user = User.new(
-      name: params['name'],
-      email: params['email'],
-      username: params['username'],
-      password: params['password'],
-      admin: 0
-    )
-    if user.valid? # Si los parametros son validos se registra el usuario.
-      user.save
+    user = User.new(params_user)
+    if  user.valid?                                   #Si los parametros son validos se registra el usuario.
+      user.save  
       erb :login
     elsif params[''] == '' # Si hay datos invalidos, muestra error.
       @error = 'Verifique, campo/s vacio/s'
@@ -143,8 +137,8 @@ class App < Sinatra::Base
     else
       @filename = nil
     end
-    document = Document.new(title: params['title'], topic: params['topic'], file: @filename)
-    if document.valid? && !@filename.nil? # Si el documento es valido se guarda
+    document = Document.new(params_doc)
+    if document.valid? && @filename != nil   #Si el documento es valido se guarda
       document.save
       tagusers = params['multi_select']
       tagusers.each do |u| # Etiqueta de usuarios
@@ -210,16 +204,40 @@ class App < Sinatra::Base
       ws.onopen do
         settings.sockets << ws
       end
-      ws.onmessage do |msg|
-        EM.next_tick do
-          settings.sockets.each do |s|
-            s.send(msg)
-          end
-        end
-      end
+      notifications
       ws.onclose do
         settings.sockets.delete(ws)
       end
     end
+  end
+  
+  def notifications
+    ws.onmessage do |msg|
+      EM.next_tick {
+        settings.sockets.each{|s|
+          s.send(msg)
+        }
+      }
+    end
+  end
+
+  #Pasaje de parametros a signup
+  def params_user
+    {
+      name: params['name'],
+      email: params['email'],
+      username: params['username'],
+      password: params['password'],
+      admin: 0
+    }
+  end
+
+  #Pasaje de parametros a save_document
+  def params_doc
+    {
+      title: params['title'],
+      topic: params['topic'],
+      file: @filename
+    }
   end
 end
