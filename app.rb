@@ -119,7 +119,7 @@ class App < Sinatra::Base
     request.body.rewind
     hash = Rack::Utils.parse_nested_query(request.body.read)
     params = JSON.parse hash.to_json
-    user = User.new(name: params["name"], email: params["email"], username: params["username"], password: params["password"], admin: 0)
+    user = User.new(params_user)
     if  user.valid?                                   #Si los parametros son validos se registra el usuario.
       user.save  
       erb :login
