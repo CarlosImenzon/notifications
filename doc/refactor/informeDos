@@ -1,0 +1,112 @@
+Inspecting 1 file
+W
+
+Offenses:
+
+app.rb:10:1: C: Style/MixinUsage: include is used at the top level. Use inside class or module.
+include FileUtils::Verbose
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:12:1: C: Metrics/ClassLength: Class has too many lines. [191/100]
+class App < Sinatra::Base ...
+^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:12:1: C: Style/Documentation: Missing top-level class documentation comment.
+class App < Sinatra::Base
+^^^^^
+app.rb:39:79: C: Style/AsciiComments: Use only ascii symbols in comments.
+  get '/login' do         # get del login si inicia sesion entra a la aplicación,
+                                                                              ^
+app.rb:39:81: C: Metrics/LineLength: Line is too long. [81/80]
+  get '/login' do         # get del login si inicia sesion entra a la aplicación,
+                                                                                ^
+app.rb:47:61: C: Style/AsciiComments: Use only ascii symbols in comments.
+  get '/logout' do    # get del logout para terminar la sesión.
+                                                            ^
+app.rb:60:81: C: Metrics/LineLength: Line is too long. [93/80]
+  get '/save_document' do   # get para cargar un nuevo documento si es usuario administrador.
+                                                                                ^^^^^^^^^^^^^
+app.rb:71:81: C: Metrics/LineLength: Line is too long. [95/80]
+  get '/documents' do       # get para mostrar todos los documentos a un usuario administrador.
+                                                                                ^^^^^^^^^^^^^^^
+app.rb:75:9: C: Style/IdenticalConditionalBranches: Move erb :documents out of the conditional.
+        erb :documents
+        ^^^^^^^^^^^^^^
+app.rb:78:9: C: Style/IdenticalConditionalBranches: Move erb :documents out of the conditional.
+        erb :documents
+        ^^^^^^^^^^^^^^
+app.rb:85:57: C: Style/AsciiComments: Use only ascii symbols in comments.
+  get '/change_pass' do   # get para cambiar la contraseña de un usuario.
+                                                        ^
+app.rb:101:81: C: Metrics/LineLength: Line is too long. [85/80]
+  post '/login' do                                    # post para loguear un usuario.
+                                                                                ^^^^^
+app.rb:103:81: C: Metrics/LineLength: Line is too long. [92/80]
+    if @user && @user.password == params['password']  # Si los campos son correctos ingresa.
+                                                                                ^^^^^^^^^^^^
+app.rb:107:7: C: Style/IfInsideElse: Convert if nested inside else to elsif.
+      if params[''] = ''
+      ^^
+app.rb:107:21: W: Lint/AssignmentInCondition: Use == if you meant to do a comparison or wrap the expression in parentheses to indicate you meant to assign in a condition.
+      if params[''] = ''
+                    ^
+app.rb:108:81: C: Metrics/LineLength: Line is too long. [89/80]
+        @error = 'Verifique, campo/s vacio/s' # Si algun campo esta vacio, muestra error.
+                                                                                ^^^^^^^^^
+app.rb:109:9: C: Style/IdenticalConditionalBranches: Move erb :login out of the conditional.
+        erb :login
+        ^^^^^^^^^^
+app.rb:112:9: C: Style/IdenticalConditionalBranches: Move erb :login out of the conditional.
+        erb :login
+        ^^^^^^^^^^
+app.rb:113:6: W: Lint/EndAlignment: end at 113, 5 is not aligned with if at 107, 6.
+     end
+     ^^^
+app.rb:121:81: C: Metrics/LineLength: Line is too long. [135/80]
+    user = User.new(name: params['name'], email: params['email'], username: params['username'], password: params['password'], admin: 0)
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:125:22: W: Lint/AssignmentInCondition: Use == if you meant to do a comparison or wrap the expression in parentheses to indicate you meant to assign in a condition.
+    elsif params[''] = '' # Si hay datos invalidos, muestra error.
+                     ^
+app.rb:131:7: W: Lint/EndAlignment: end at 131, 6 is not aligned with if at 122, 4.
+      end
+      ^^^
+app.rb:142:81: C: Metrics/LineLength: Line is too long. [92/80]
+    document = Document.new(title: params['title'], topic: params['topic'], file: @filename)
+                                                                                ^^^^^^^^^^^^
+app.rb:151:7: W: Lint/Void: Literal 'Documento cargado' used in void context.
+      'Documento cargado'
+      ^^^^^^^^^^^^^^^^^^^
+app.rb:160:76: C: Style/AsciiComments: Use only ascii symbols in comments.
+  post '/change_pass' do                    # Post para cambiar la contraseña de usuario.
+                                                                           ^
+app.rb:160:81: C: Metrics/LineLength: Line is too long. [89/80]
+  post '/change_pass' do                    # Post para cambiar la contraseña de usuario.
+                                                                                ^^^^^^^^^
+app.rb:164:77: C: Style/AsciiComments: Use only ascii symbols in comments.
+    if params['password1'] != params['password2']	# Verifica que la contraseña y la confirmacion sean iguales
+                                                                            ^
+app.rb:164:81: C: Metrics/LineLength: Line is too long. [109/80]
+    if params['password1'] != params['password2']	# Verifica que la contraseña y la confirmacion sean iguales
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:168:7: C: Style/IfInsideElse: Convert if nested inside else to elsif.
+      if @user.update(password: params['password1'])
+      ^^
+app.rb:182:81: C: Metrics/LineLength: Line is too long. [105/80]
+    if params['email1'] != params['email2']	# Verifica que el correo nuevo y la confirmacion sean iguales
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:186:7: C: Style/IfInsideElse: Convert if nested inside else to elsif.
+      if @user.update(email: params['email1'])
+      ^^
+app.rb:201:30: C: Style/CommentedKeyword: Do not place comments on the same line as the def keyword.
+  def suppress_doc(document)	# Funcion para el borrado logico de un documento
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:205:3: C: Metrics/AbcSize: Assignment Branch Condition size for notification is too high. [16/15]
+  def notification	# Funcion para la notificacion en tiempo real ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:205:3: C: Metrics/MethodLength: Method has too many lines. [15/10]
+  def notification	# Funcion para la notificacion en tiempo real ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:205:20: C: Style/CommentedKeyword: Do not place comments on the same line as the def keyword.
+  def notification	# Funcion para la notificacion en tiempo real
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1 file inspected, 35 offenses detected

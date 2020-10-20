@@ -1,0 +1,448 @@
+Inspecting 1 file
+W
+
+Offenses:
+
+app.rb:10:1: C: Layout/EmptyLines: Extra blank line detected.
+app.rb:11:1: C: Style/MixinUsage: include is used at the top level. Use inside class or module.
+include FileUtils::Verbose
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:13:1: C: Metrics/ClassLength: Class has too many lines. [193/100]
+class App < Sinatra::Base ...
+^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:13:1: C: Style/Documentation: Missing top-level class documentation comment.
+class App < Sinatra::Base
+^^^^^
+app.rb:17:26: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    set :session_secret, "Secreto"
+                         ^^^^^^^^^
+app.rb:27:7: C: Layout/ElseAlignment: Align elsif with if.
+      elsif session[:user_id]
+      ^^^^^
+app.rb:34:10: C: Layout/SpaceBeforeFirstArg: Put one space between the method name and the first argument.
+      erb:index
+         
+app.rb:40:7: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  get "/login" do         #get del login si inicia sesion entra a la aplicación,
+      ^^^^^^^^
+app.rb:40:27: C: Layout/LeadingCommentSpace: Missing space after #.
+  get "/login" do         #get del login si inicia sesion entra a la aplicación,
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:40:78: C: Style/AsciiComments: Use only ascii symbols in comments.
+  get "/login" do         #get del login si inicia sesion entra a la aplicación,
+                                                                             ^
+app.rb:41:27: C: Layout/LeadingCommentSpace: Missing space after #.
+    if session[:user_id]  #de lo contrario vuelve a solicitar los datos.
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:48:7: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  get "/logout" do    #get del logout para terminar la sesión.
+      ^^^^^^^^^
+app.rb:48:23: C: Layout/LeadingCommentSpace: Missing space after #.
+  get "/logout" do    #get del logout para terminar la sesión.
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:48:60: C: Style/AsciiComments: Use only ascii symbols in comments.
+  get "/logout" do    #get del logout para terminar la sesión.
+                                                           ^
+app.rb:53:7: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  get "/signup" do    #get para registrar un nuevo usuario.
+      ^^^^^^^^^
+app.rb:53:23: C: Layout/LeadingCommentSpace: Missing space after #.
+  get "/signup" do    #get para registrar un nuevo usuario.
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:61:7: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  get "/save_document" do   #get para cargar un nuevo documento si es usuario administrador.
+      ^^^^^^^^^^^^^^^^
+app.rb:61:29: C: Layout/LeadingCommentSpace: Missing space after #.
+  get "/save_document" do   #get para cargar un nuevo documento si es usuario administrador.
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:61:81: C: Metrics/LineLength: Line is too long. [92/80]
+  get "/save_document" do   #get para cargar un nuevo documento si es usuario administrador.
+                                                                                ^^^^^^^^^^^^
+app.rb:72:7: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  get "/documents" do       #get para mostrar todos los documentos a un usuario administrador.
+      ^^^^^^^^^^^^
+app.rb:72:29: C: Layout/LeadingCommentSpace: Missing space after #.
+  get "/documents" do       #get para mostrar todos los documentos a un usuario administrador.
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:72:81: C: Metrics/LineLength: Line is too long. [94/80]
+  get "/documents" do       #get para mostrar todos los documentos a un usuario administrador.
+                                                                                ^^^^^^^^^^^^^^
+app.rb:76:9: C: Style/IdenticalConditionalBranches: Move erb :documents out of the conditional.
+        erb :documents
+        ^^^^^^^^^^^^^^
+app.rb:79:9: C: Style/IdenticalConditionalBranches: Move erb :documents out of the conditional.
+        erb :documents
+        ^^^^^^^^^^^^^^
+app.rb:86:7: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  get "/change_pass" do   #get para cambiar la contraseña de un usuario.
+      ^^^^^^^^^^^^^^
+app.rb:86:27: C: Layout/LeadingCommentSpace: Missing space after #.
+  get "/change_pass" do   #get para cambiar la contraseña de un usuario.
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:86:56: C: Style/AsciiComments: Use only ascii symbols in comments.
+  get "/change_pass" do   #get para cambiar la contraseña de un usuario.
+                                                       ^
+app.rb:90:7: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  get "/change_mail" do   #get para cambiar el mail de un usuario.
+      ^^^^^^^^^^^^^^
+app.rb:90:27: C: Layout/LeadingCommentSpace: Missing space after #.
+  get "/change_mail" do   #get para cambiar el mail de un usuario.
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:94:7: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  get "/profile" do       #get para ver el perfil de un usuario.
+      ^^^^^^^^^^
+app.rb:94:27: C: Layout/LeadingCommentSpace: Missing space after #.
+  get "/profile" do       #get para ver el perfil de un usuario.
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:102:55: C: Layout/LeadingCommentSpace: Missing space after #.
+  post '/login' do                                    #post para loguear un usuario.
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:102:81: C: Metrics/LineLength: Line is too long. [84/80]
+  post '/login' do                                    #post para loguear un usuario.
+                                                                                ^^^^
+app.rb:104:55: C: Layout/LeadingCommentSpace: Missing space after #.
+    if @user && @user.password == params['password']  #Si los campos son correctos ingresa.
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:104:81: C: Metrics/LineLength: Line is too long. [91/80]
+    if @user && @user.password == params['password']  #Si los campos son correctos ingresa.
+                                                                                ^^^^^^^^^^^
+app.rb:107:7: C: Layout/ElseAlignment: Align else with if.
+      else
+      ^^^^
+app.rb:108:7: C: Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+       if params[""]=""   
+      ^
+app.rb:108:8: C: Style/IfInsideElse: Convert if nested inside else to elsif.
+       if params[""]=""   
+       ^^
+app.rb:108:18: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+       if params[""]=""   
+                 ^^
+app.rb:108:21: C: Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+       if params[""]=""   
+                    ^
+app.rb:108:21: W: Lint/AssignmentInCondition: Use == if you meant to do a comparison or wrap the expression in parentheses to indicate you meant to assign in a condition.
+       if params[""]=""   
+                    ^
+app.rb:108:22: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+       if params[""]=""   
+                     ^^
+app.rb:108:24: C: Layout/TrailingWhitespace: Trailing whitespace detected.
+       if params[""]=""   
+                       ^^^
+app.rb:109:8: C: Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+        @error ="Verifique, campo/s vacio/s"          #Si algun campo esta vacio, muestra error.  
+       ^
+app.rb:109:16: C: Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+        @error ="Verifique, campo/s vacio/s"          #Si algun campo esta vacio, muestra error.  
+               ^
+app.rb:109:17: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        @error ="Verifique, campo/s vacio/s"          #Si algun campo esta vacio, muestra error.  
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:109:55: C: Layout/LeadingCommentSpace: Missing space after #.
+        @error ="Verifique, campo/s vacio/s"          #Si algun campo esta vacio, muestra error.  
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:109:81: C: Metrics/LineLength: Line is too long. [98/80]
+        @error ="Verifique, campo/s vacio/s"          #Si algun campo esta vacio, muestra error.  
+                                                                                ^^^^^^^^^^^^^^^^^^
+app.rb:109:97: C: Layout/TrailingWhitespace: Trailing whitespace detected.
+        @error ="Verifique, campo/s vacio/s"          #Si algun campo esta vacio, muestra error.  
+                                                                                                ^^
+app.rb:110:9: C: Style/IdenticalConditionalBranches: Move erb :login out of the conditional.
+        erb :login
+        ^^^^^^^^^^
+app.rb:111:7: C: Layout/ElseAlignment: Align else with if.
+      else  
+      ^^^^
+app.rb:111:11: C: Layout/TrailingWhitespace: Trailing whitespace detected.
+      else  
+          ^^
+app.rb:112:16: C: Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+        @error ="Su username o email ya existe"
+               ^
+app.rb:112:17: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        @error ="Su username o email ya existe"
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:113:9: C: Style/IdenticalConditionalBranches: Move erb :login out of the conditional.
+        erb :login
+        ^^^^^^^^^^
+app.rb:114:7: W: Lint/EndAlignment: end at 114, 6 is not aligned with if at 108, 7.
+      end
+      ^^^
+app.rb:118:20: C: Layout/ExtraSpacing: Unnecessary spacing detected.
+  post '/signup' do                             #post para registrar un usuario.
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:118:49: C: Layout/LeadingCommentSpace: Missing space after #.
+  post '/signup' do                             #post para registrar un usuario.
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:122:34: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    user = User.new(name: params["name"], email: params["email"], username: params["username"], password: params["password"], admin: 0)
+                                 ^^^^^^
+app.rb:122:57: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    user = User.new(name: params["name"], email: params["email"], username: params["username"], password: params["password"], admin: 0)
+                                                        ^^^^^^^
+app.rb:122:81: C: Metrics/LineLength: Line is too long. [135/80]
+    user = User.new(name: params["name"], email: params["email"], username: params["username"], password: params["password"], admin: 0)
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:122:84: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    user = User.new(name: params["name"], email: params["email"], username: params["username"], password: params["password"], admin: 0)
+                                                                                   ^^^^^^^^^^
+app.rb:122:114: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    user = User.new(name: params["name"], email: params["email"], username: params["username"], password: params["password"], admin: 0)
+                                                                                                                 ^^^^^^^^^^
+app.rb:123:7: C: Layout/ExtraSpacing: Unnecessary spacing detected.
+    if  user.valid?                                   #Si los parametros son validos se registra el usuario.
+      ^
+app.rb:123:55: C: Layout/LeadingCommentSpace: Missing space after #.
+    if  user.valid?                                   #Si los parametros son validos se registra el usuario.
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:123:81: C: Metrics/LineLength: Line is too long. [108/80]
+    if  user.valid?                                   #Si los parametros son validos se registra el usuario.
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:124:16: C: Layout/TrailingWhitespace: Trailing whitespace detected.
+      user.save  
+               ^^
+app.rb:126:7: C: Layout/ElseAlignment: Align elsif with if.
+      elsif params[""]=""                             #Si hay datos invalidos, muestra error.
+      ^^^^^
+app.rb:126:20: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      elsif params[""]=""                             #Si hay datos invalidos, muestra error.
+                   ^^
+app.rb:126:23: C: Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+      elsif params[""]=""                             #Si hay datos invalidos, muestra error.
+                      ^
+app.rb:126:23: W: Lint/AssignmentInCondition: Use == if you meant to do a comparison or wrap the expression in parentheses to indicate you meant to assign in a condition.
+      elsif params[""]=""                             #Si hay datos invalidos, muestra error.
+                      ^
+app.rb:126:24: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      elsif params[""]=""                             #Si hay datos invalidos, muestra error.
+                       ^^
+app.rb:126:55: C: Layout/LeadingCommentSpace: Missing space after #.
+      elsif params[""]=""                             #Si hay datos invalidos, muestra error.
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:126:81: C: Metrics/LineLength: Line is too long. [93/80]
+      elsif params[""]=""                             #Si hay datos invalidos, muestra error.
+                                                                                ^^^^^^^^^^^^^
+app.rb:127:16: C: Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+        @error ="Verifique, campo/s vacio/s"
+               ^
+app.rb:127:17: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        @error ="Verifique, campo/s vacio/s"
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:129:7: C: Layout/ElseAlignment: Align else with if.
+      else  
+      ^^^^
+app.rb:129:11: C: Layout/TrailingWhitespace: Trailing whitespace detected.
+      else  
+          ^^
+app.rb:130:16: C: Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+        @error ="Su username o email ya existe"
+               ^
+app.rb:130:17: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        @error ="Su username o email ya existe"
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:132:7: W: Lint/EndAlignment: end at 132, 6 is not aligned with if at 123, 4.
+      end
+      ^^^
+app.rb:133:1: C: Layout/TrailingWhitespace: Trailing whitespace detected.
+app.rb:136:27: C: Layout/ExtraSpacing: Unnecessary spacing detected.
+  post '/save_document' do                #post para cargar un nuevo documento
+                          ^^^^^^^^^^^^^^^
+app.rb:136:43: C: Layout/LeadingCommentSpace: Missing space after #.
+  post '/save_document' do                #post para cargar un nuevo documento
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:137:16: C: Style/NumericLiteralPrefix: Use 0o for octal literals.
+    File.chmod(0777, "public/")
+               ^^^^
+app.rb:137:22: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    File.chmod(0777, "public/")
+                     ^^^^^^^^^
+app.rb:138:27: C: Style/NonNilCheck: Prefer !expression.nil? over expression != nil.
+    if params[:fileInput] != nil
+                          ^^
+app.rb:144:43: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    document = Document.new(title: params["title"], topic: params["topic"], file: @filename)
+                                          ^^^^^^^
+app.rb:144:67: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    document = Document.new(title: params["title"], topic: params["topic"], file: @filename)
+                                                                  ^^^^^^^
+app.rb:144:81: C: Metrics/LineLength: Line is too long. [92/80]
+    document = Document.new(title: params["title"], topic: params["topic"], file: @filename)
+                                                                                ^^^^^^^^^^^^
+app.rb:145:37: C: Style/NonNilCheck: Prefer !expression.nil? over expression != nil.
+    if document.valid? && @filename != nil   #Si el documento es valido se guarda
+                                    ^^
+app.rb:145:43: C: Layout/ExtraSpacing: Unnecessary spacing detected.
+    if document.valid? && @filename != nil   #Si el documento es valido se guarda
+                                          ^^
+app.rb:145:46: C: Layout/LeadingCommentSpace: Missing space after #.
+    if document.valid? && @filename != nil   #Si el documento es valido se guarda
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:145:81: C: Metrics/LineLength: Line is too long. [81/80]
+    if document.valid? && @filename != nil   #Si el documento es valido se guarda
+                                                                                ^
+app.rb:147:25: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      tagusers = params["multi_select"]
+                        ^^^^^^^^^^^^^^
+app.rb:148:45: C: Layout/LeadingCommentSpace: Missing space after #.
+      tagusers.each do |u|                  #Etiqueta de usuarios
+                                            ^^^^^^^^^^^^^^^^^^^^^
+app.rb:152:18: C: Style/NumericLiteralPrefix: Use 0o for octal literals.
+      File.chmod(0777, "public/#{document.id}#{document.file}")
+                 ^^^^
+app.rb:153:7: W: Lint/Void: Literal "Documento cargado" used in void context.
+      "Documento cargado"
+      ^^^^^^^^^^^^^^^^^^^
+app.rb:153:7: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      "Documento cargado"
+      ^^^^^^^^^^^^^^^^^^^
+app.rb:156:14: C: Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+      @error ="Error al cargar documento, verifique los campos"
+             ^
+app.rb:156:15: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      @error ="Error al cargar documento, verifique los campos"
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:162:45: C: Layout/LeadingCommentSpace: Missing space after #.
+  post '/change_pass' do                    #Post para cambiar la contraseña de usuario.
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:162:75: C: Style/AsciiComments: Use only ascii symbols in comments.
+  post '/change_pass' do                    #Post para cambiar la contraseña de usuario.
+                                                                          ^
+app.rb:162:81: C: Metrics/LineLength: Line is too long. [88/80]
+  post '/change_pass' do                    #Post para cambiar la contraseña de usuario.
+                                                                                ^^^^^^^^
+app.rb:166:15: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    if params["password1"] != params["password2"]	#Verifica que la contraseña y la confirmacion sean iguales
+              ^^^^^^^^^^^
+app.rb:166:38: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    if params["password1"] != params["password2"]	#Verifica que la contraseña y la confirmacion sean iguales
+                                     ^^^^^^^^^^^
+app.rb:166:51: C: Layout/LeadingCommentSpace: Missing space after #.
+    if params["password1"] != params["password2"]	#Verifica que la contraseña y la confirmacion sean iguales
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:166:76: C: Style/AsciiComments: Use only ascii symbols in comments.
+    if params["password1"] != params["password2"]	#Verifica que la contraseña y la confirmacion sean iguales
+                                                                           ^
+app.rb:166:81: C: Metrics/LineLength: Line is too long. [108/80]
+    if params["password1"] != params["password2"]	#Verifica que la contraseña y la confirmacion sean iguales
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:167:14: C: Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+      @error ="Las contraseñas no coinciden"
+             ^
+app.rb:167:15: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      @error ="Las contraseñas no coinciden"
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:170:7: C: Style/IfInsideElse: Convert if nested inside else to elsif.
+      if @user.update(password: params["password1"])
+      ^^
+app.rb:170:40: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      if @user.update(password: params["password1"])
+                                       ^^^^^^^^^^^
+app.rb:171:23: C: Layout/LeadingCommentSpace: Missing space after #.
+        session.clear	#se cierra la sesion
+                      ^^^^^^^^^^^^^^^^^^^^
+app.rb:174:16: C: Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+        @error ="Error al cambiar contraseña o ingresaste la misma contraseña"
+               ^
+app.rb:174:17: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        @error ="Error al cambiar contraseña o ingresaste la misma contraseña"
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:180:25: C: Layout/ExtraSpacing: Unnecessary spacing detected.
+  post '/change_mail' do  				#Post para cambiar el mail del usuario.
+                        ^^^^^
+app.rb:180:31: C: Layout/LeadingCommentSpace: Missing space after #.
+  post '/change_mail' do  				#Post para cambiar el mail del usuario.
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:184:15: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    if params["email1"] != params["email2"]	#Verifica que el correo nuevo y la confirmacion sean iguales
+              ^^^^^^^^
+app.rb:184:35: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    if params["email1"] != params["email2"]	#Verifica que el correo nuevo y la confirmacion sean iguales
+                                  ^^^^^^^^
+app.rb:184:45: C: Layout/LeadingCommentSpace: Missing space after #.
+    if params["email1"] != params["email2"]	#Verifica que el correo nuevo y la confirmacion sean iguales
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:184:81: C: Metrics/LineLength: Line is too long. [104/80]
+    if params["email1"] != params["email2"]	#Verifica que el correo nuevo y la confirmacion sean iguales
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:185:14: C: Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+      @error ="Los email no coinciden"
+             ^
+app.rb:185:15: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      @error ="Los email no coinciden"
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:188:7: C: Style/IfInsideElse: Convert if nested inside else to elsif.
+      if @user.update(email: params["email1"])
+      ^^
+app.rb:188:37: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      if @user.update(email: params["email1"])
+                                    ^^^^^^^^
+app.rb:191:16: C: Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+        @error ="Error al cambiar email o ingresaste el mismo email"
+               ^
+app.rb:191:17: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        @error ="Error al cambiar email o ingresaste el mismo email"
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:197:24: C: Layout/ExtraSpacing: Unnecessary spacing detected.
+  post '/delete_doc' do  			#Post de borrado logico de un documento  
+                       ^^^^
+app.rb:197:29: C: Layout/LeadingCommentSpace: Missing space after #.
+  post '/delete_doc' do  			#Post de borrado logico de un documento  
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:197:68: C: Layout/TrailingWhitespace: Trailing whitespace detected.
+  post '/delete_doc' do  			#Post de borrado logico de un documento  
+                                                                   ^^
+app.rb:198:21: C: Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    doc_id = params["delete_doc"]
+                    ^^^^^^^^^^^^
+app.rb:199:5: C: Style/IfUnlessModifier: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+    if !doc_id.nil?
+    ^^
+app.rb:199:5: C: Style/NegatedIf: Favor unless over if for negative conditions.
+    if !doc_id.nil? ...
+    ^^^^^^^^^^^^^^^
+app.rb:205:29: C: Layout/ExtraSpacing: Unnecessary spacing detected.
+  def suppress_doc(document)		#Funcion para el borrado logico de un documento
+                            ^
+app.rb:205:31: C: Layout/LeadingCommentSpace: Missing space after #.
+  def suppress_doc(document)		#Funcion para el borrado logico de un documento
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:205:31: C: Style/CommentedKeyword: Do not place comments on the same line as the def keyword.
+  def suppress_doc(document)		#Funcion para el borrado logico de un documento
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:206:3: C: Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+      document.update(visibility: false)	#Cambio de visibilidad del documento
+  ^^^^
+app.rb:206:42: C: Layout/LeadingCommentSpace: Missing space after #.
+      document.update(visibility: false)	#Cambio de visibilidad del documento
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:209:3: C: Metrics/AbcSize: Assignment Branch Condition size for notification is too high. [16/15]
+  def notification					#Funcion para la notificacion en tiempo real ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:209:3: C: Metrics/MethodLength: Method has too many lines. [15/10]
+  def notification					#Funcion para la notificacion en tiempo real ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:209:19: C: Layout/ExtraSpacing: Unnecessary spacing detected.
+  def notification					#Funcion para la notificacion en tiempo real
+                  ^^^^
+app.rb:209:24: C: Layout/LeadingCommentSpace: Missing space after #.
+  def notification					#Funcion para la notificacion en tiempo real
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:209:24: C: Style/CommentedKeyword: Do not place comments on the same line as the def keyword.
+  def notification					#Funcion para la notificacion en tiempo real
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:215:22: C: Style/BlockDelimiters: Avoid using {...} for multi-line blocks.
+        EM.next_tick {
+                     ^
+app.rb:216:32: C: Layout/SpaceBeforeBlockBraces: Space missing to the left of {.
+          settings.sockets.each{|s|
+                               ^
+app.rb:216:32: C: Layout/SpaceInsideBlockBraces: Space between { and | missing.
+          settings.sockets.each{|s|
+                               ^^
+app.rb:216:32: C: Style/BlockDelimiters: Avoid using {...} for multi-line blocks.
+          settings.sockets.each{|s|
+                               ^
+app.rb:226:1: C: Layout/TrailingWhitespace: Trailing whitespace detected.
+
+1 file inspected, 149 offenses detected
