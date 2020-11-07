@@ -19,7 +19,7 @@ class App < Sinatra::Base
   end
 
   use DocumentController
-
+  
   include FileUtils::Verbose
 
   before do
