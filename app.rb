@@ -18,6 +18,8 @@ class App < Sinatra::Base
     set :sockets, []
   end
 
+  use DocumentController
+
   include FileUtils::Verbose
 
   before do
