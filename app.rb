@@ -1,66 +1,46 @@
-require 'sinatra/base'
-require 'json'
-require './models/init.rb'
-require './models/user.rb'
-require 'date'
-require 'net/http'
-require 'sinatra'
-require 'sinatra-websocket'
-
 # clase principal
 class App < Sinatra::Base
+
+  require 'sinatra/base'
+  require 'json'
+  require './models/init.rb'
+  require './models/user.rb'
+  require 'date'
+  require 'net/http'
+  require 'sinatra'
+  require 'sinatra-websocket'
+  require './controllers/accountController.rb'
+  include FileUtils::Verbose
+
+
   configure :development do
     enable :logging
     enable :session
+    #set :sessionns_fail, '/'
     set :session_secret, 'Secreto'
     set :sessions, true
     set :server, 'thin'
     set :sockets, []
   end
 
-  use DocumentController
-  
-  include FileUtils::Verbose
-
   before do
+    @user = User.find(id: session[:user_id])
     @path = request.path_info
-    if !session[:user_id] && @path != '/login' && @path != '/signup'
+    if !@user && @path != '/login' && @path != '/signup'
       redirect '/login'
-    elsif session[:user_id]
+    elsif @user 
       @user = User.find(id: session[:user_id])
     end
   end
 
-  # get del index principal.
+  use AccountController
+
+  # get del index principal.(Listo)
   get '/' do
     if !request.websocket?
       erb :index
     else
       notification
-    end
-  end
-
-  # get del login para iniciar sesion.
-  get '/login' do         # si se inicia sesion entra a la aplicacion,
-    if session[:user_id]  # de lo contrario vuelve a solicitar los datos.
-      redirect '/'
-    else
-      erb :login
-    end
-  end
-
-  # get del logout para terminar la sesion.
-  get '/logout' do
-    session.clear
-    erb :logout
-  end
-
-  # get para registrar un nuevo usuario.
-  get '/signup' do
-    if session[:user_id]
-      session.clear
-    else
-      erb :signup
     end
   end
 
@@ -77,7 +57,7 @@ class App < Sinatra::Base
   end
 
   # Get para mostrar los documentos
-  get '/documents' do
+    get '/documents' do
     if request.websocket?
       notification
     elsif session[:user_id] && @user.admin == 1
@@ -86,60 +66,6 @@ class App < Sinatra::Base
     else
       @documents = @user.documents
       erb :documents
-    end
-  end
-
-  # get para cambiar la contrasena de un usuario.
-  get '/change_pass' do
-    erb :change_pass
-  end
-
-  # get para cambiar el mail de un usuario.
-  get '/change_mail' do
-    erb :change_mail
-  end
-
-  # get para ver el perfil de un usuario.
-  get '/profile' do
-    if !request.websocket?
-      erb :profile
-    else
-      notification
-    end
-  end
-
-  # post para loguear un usuario.
-  post '/login' do
-    @user = User.find(username: params[:username])
-    if @user && @user.password == params['password']
-      # Si los campos son correctos ingresa.
-      session[:user_id] = @user.id
-      redirect '/'
-    elsif params[''] == ''
-      # Si algun campo esta vacio, muestra error.
-      @error = 'Verifique, campo/s vacio/s'
-      erb :login
-    else
-      @error = 'Su username o email ya existe'
-      erb :login
-    end
-  end
-
-  # post para registrar un usuario.
-  post '/signup' do
-    request.body.rewind
-    hash = Rack::Utils.parse_nested_query(request.body.read)
-    params = JSON.parse hash.to_json
-    user = User.new(params_user)
-    if user.valid? # Si los parametros son validos se registra el usuario.
-      user.save
-      erb :login
-    elsif params[''] == '' # Si hay datos invalidos, muestra error.
-      @error = 'Verifique, campo/s vacio/s'
-      erb :signup
-    else
-      @error = 'Su username o email ya existe'
-      erb :signup
     end
   end
 
@@ -169,41 +95,6 @@ class App < Sinatra::Base
     end
   end
 
-  # Post para cambiar la contrasena de usuario.
-  post '/change_pass' do
-    request.body.rewind
-    hash = Rack::Utils.parse_nested_query(request.body.read)
-    params = JSON.parse hash.to_json
-    # Verifica que la contrasena y la confirmacion sean iguales
-    if params['password1'] != params['password2']
-      @error = 'Las contraseñas no coinciden'
-      erb :change_pass
-    elsif @user.update(password: params['password1'])
-      session.clear	# se cierra la sesion
-      erb :login
-    else
-      @error = 'Error al cambiar contraseña o ingresaste la misma contraseña'
-      erb :change_pass
-    end
-  end
-
-  # Post para cambiar el mail del usuario.
-  post '/change_mail' do
-    request.body.rewind
-    hash = Rack::Utils.parse_nested_query(request.body.read)
-    params = JSON.parse hash.to_json
-    # Verifica que el correo nuevo y la confirmacion sean iguales
-    if params['email1'] != params['email2']
-      @error = 'Los email no coinciden'
-      erb :change_mail
-    elsif @user.update(email: params['email1'])
-      erb :profile
-    else
-      @error = 'Error al cambiar email o ingresaste el mismo email'
-      erb :change_mail
-    end
-  end
-
   # Post de borrado logico de un documento
   post '/delete_doc' do
     doc_id = params['delete_doc']
@@ -216,7 +107,7 @@ class App < Sinatra::Base
     document.update(visibility: false)	# Cambio de visibilidad del documento
   end
 
-  # Funcion para la notificacion en tiempo real
+  # Funcion para la notificacion en tiempo real (Listo)
   def notification
     request.websocket do |ws|
       ws.onopen do
@@ -238,17 +129,6 @@ class App < Sinatra::Base
         end
       end
     end
-  end
-
-  # Pasaje de parametros a signup
-  def params_user
-    {
-      name: params['name'],
-      email: params['email'],
-      username: params['username'],
-      password: params['password'],
-      admin: 0
-    }
   end
 
   # Pasaje de parametros a save_document
