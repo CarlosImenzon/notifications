@@ -4,6 +4,9 @@
 				<center><h2 class="text-white">Nuevo Documento</h2></center>
 				<br>
 					<!--Se define la forma de enviar los datos-->
+					<% if flash[:error_message] %> <!--Se notifica en caso de algun error-->
+                		<p><%= flash[:error_message] %></p>
+            		<% end %>
 					<form id="form" action="/save_document" method="POST" enctype="multipart/form-data">
 						<!--Se solicita informacion necesaria para la carga-->
 						<div class="form-group">	
