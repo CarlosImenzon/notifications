@@ -1,25 +1,23 @@
-require 'sinatra/base'
-require './services/documentService.rb'
-require 'json'
-require 'sinatra/flash'
-require './exceptions/ValidationModelError.rb'
-
-
-include FileUtils::Verbose
-
+# Clase document controller
 class DocumentController < Sinatra::Base
+  require 'sinatra/base'
+  require './services/documentService.rb'
+  require 'json'
+  require 'sinatra/flash'
+  require './exceptions/ValidationModelError.rb'
+
   configure :development, :production do
     set :views, settings.root + '/../views'
-  end 
-  
-  before do 
+  end
+
+  before do
     @user = User.find(id: session[:user_id])
     @documents = Document.all
     @users = User.order(:username)
   end
 
   # Mostrar excepciones
-	register Sinatra::Flash
+  register Sinatra::Flash
 
   # Get para mostrar los documentos
   get '/documents' do
@@ -45,27 +43,26 @@ class DocumentController < Sinatra::Base
       notification
     end
   end
-  
-   # post para cargar un nuevo documento
+
+  # post para cargar un nuevo documento
   post '/save_document' do
     title = params['title']
     topic = params['topic']
-    #file = @filename
+    # file = @filename
     File.chmod(0o777, 'public/')
     filename = params[:fileInput][:filename]
     file = params[:fileInput][:tempfile]
     tagusers = params['multi_select']
     begin
-      if !file.nil?
+      unless file.nil?
         Document_Service.new_document(title, topic, file, tagusers)
         redirect '/'
       end
-      rescue ValidationModelError => e
-        flash.now[:error_message] = e.message
-        return erb :save_document
+    rescue ValidationModelError => e
+      flash.now[:error_message] = e.message
+      return erb :save_document
     end
   end
-
 
   # Post de borrado logico de un documento
   post '/delete_doc' do
@@ -75,8 +72,8 @@ class DocumentController < Sinatra::Base
       flash.now[:error_message] = ''
       erb :documents
     rescue ValidationModelError => e
-			flash.now[:error_message] = e.message
-			return erb :documents
+      flash.now[:error_message] = e.message
+      return erb :documents
     end
   end
 end
