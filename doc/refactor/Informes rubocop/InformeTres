@@ -1,0 +1,19 @@
+Inspecting 1 file
+E
+
+Offenses:
+
+app.rb:1:14: E: Lint/Syntax: unexpected token tIDENTIFIER
+(Using Ruby 2.1 parser; configure using TargetRubyVersion parameter, under AllCops)
+Inspecting 0 files
+             ^^^^^
+app.rb:4:3: E: Lint/Syntax: unexpected token tIDENTIFIER
+(Using Ruby 2.1 parser; configure using TargetRubyVersion parameter, under AllCops)
+0 files inspected, no offenses detected
+  ^^^^^
+app.rb:4:23: E: Lint/Syntax: unexpected token tIDENTIFIER
+(Using Ruby 2.1 parser; configure using TargetRubyVersion parameter, under AllCops)
+0 files inspected, no offenses detected
+                      ^^^^^^^^
+
+1 file inspected, 3 offenses detected
