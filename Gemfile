@@ -8,6 +8,7 @@ gem 'pg'
 gem 'sinatra-websocket'
 gem "activemodel", require: "active_model"
 gem 'rubocop', '~> 0.91.0', require: false
+gem 'sinatra-flash', '~> 0.3.0'
 
 group :development do
   gem 'dotenv', '2.7.5'
